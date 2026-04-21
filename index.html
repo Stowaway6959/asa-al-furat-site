@@ -500,15 +500,22 @@ footer {
 .footer-tagline { font-size: 13px; line-height: 1.75; margin-bottom: 22px; }
 .footer-socials { display: flex; gap: 10px; }
 .footer-social {
-  width: 38px; height: 38px; border-radius: 9px; display: flex;
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  transition: opacity 0.18s;
+}
+.footer-social:hover { opacity: 0.75; }
+.footer-social-icon {
+  width: 42px; height: 42px; border-radius: 10px; display: flex;
   align-items: center; justify-content: center;
-  background: rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.07);
   border: 1px solid rgba(255,255,255,0.1);
-  transition: background 0.18s, border-color 0.18s;
   overflow: hidden;
 }
-.footer-social:hover { background: rgba(255,255,255,0.13); border-color: rgba(255,255,255,0.2); }
-.footer-social svg { width: 22px; height: 22px; }
+.footer-social svg { width: 24px; height: 24px; }
+.footer-social-name {
+  font-size: 9px; font-weight: 600; letter-spacing: 0.5px;
+  color: rgba(255,255,255,0.35); text-transform: uppercase; white-space: nowrap;
+}
 .footer-col-head {
   font-size: 9px; font-weight: 700; letter-spacing: 2.5px;
   text-transform: uppercase; color: rgba(255,255,255,0.28);
@@ -1157,19 +1164,24 @@ footer {
       <p class="footer-tagline">Springfield's only authentic Iraqi bakery and coffee shop. Handmade daily from family recipes carried out of Mosul. Downtown since September 2025.</p>
       <div class="footer-socials">
         <a href="https://instagram.com/asa.alfurat" target="_blank" class="footer-social">
-          <svg><use href="#icon-instagram"/></svg>
+          <div class="footer-social-icon"><svg><use href="#icon-instagram"/></svg></div>
+          <span class="footer-social-name">Instagram</span>
         </a>
         <a href="https://www.facebook.com/p/ASA-Al-FURAT-61581178408603/" target="_blank" class="footer-social">
-          <svg><use href="#icon-facebook"/></svg>
+          <div class="footer-social-icon"><svg><use href="#icon-facebook"/></svg></div>
+          <span class="footer-social-name">Facebook</span>
         </a>
         <a href="https://www.doordash.com/store/asa-al-furat-springfield-40497555/" target="_blank" class="footer-social">
-          <svg><use href="#icon-doordash"/></svg>
+          <div class="footer-social-icon"><svg><use href="#icon-doordash"/></svg></div>
+          <span class="footer-social-name">DoorDash</span>
         </a>
         <a href="https://www.ubereats.com" target="_blank" class="footer-social">
-          <svg><use href="#icon-ubereats"/></svg>
+          <div class="footer-social-icon"><svg><use href="#icon-ubereats"/></svg></div>
+          <span class="footer-social-name">Uber Eats</span>
         </a>
         <a href="https://www.grubhub.com" target="_blank" class="footer-social">
-          <svg><use href="#icon-grubhub"/></svg>
+          <div class="footer-social-icon"><svg><use href="#icon-grubhub"/></svg></div>
+          <span class="footer-social-name">Grubhub</span>
         </a>
       </div>
     </div>
