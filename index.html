@@ -14,22 +14,77 @@
    Text: Near-black brown      — warm ink, never pure #000
 ──────────────────────────────────────────────────────────────── */
 :root {
-  --brand:       #8B1A1A;   /* pomegranate crimson */
-  --brand-deep:  #6B1212;   /* hover/pressed */
-  --brand-faint: #FBF2F2;   /* tint for backgrounds */
-  --gold:        #B8832A;   /* antique honey gold */
-  --gold-mid:    #D4A640;   /* lighter for highlights */
-  --gold-pale:   #F8EDD6;   /* parchment for section bg */
-  --ink:         #18100A;   /* headline — warm near-black */
-  --text:        #2C1B12;   /* body — warm dark brown */
-  --text-mid:    #6B5040;   /* secondary — mid brown */
-  --text-light:  #A08878;   /* muted — warm grey-brown */
-  --cream:       #FDFAF5;   /* page background */
-  --cream-warm:  #F5EDE2;   /* section background alternate */
-  --border:      #E6D5C0;   /* warm sand border */
-  --border-soft: #F0E6DA;   /* lighter border */
+  --brand:       #8B1A1A;
+  --brand-deep:  #6B1212;
+  --brand-faint: #FBF2F2;
+  --gold:        #B8832A;
+  --gold-mid:    #D4A640;
+  --gold-pale:   #F8EDD6;
+  --ink:         #18100A;
+  --text:        #2C1B12;
+  --text-mid:    #6B5040;
+  --text-light:  #A08878;
+  --cream:       #FDFAF5;
+  --cream-warm:  #F5EDE2;
+  --border:      #E6D5C0;
+  --border-soft: #F0E6DA;
   --white:       #FFFFFF;
 }
+
+/* ── DARK MODE ───────────────────────────────────────────────── */
+html.dark {
+  --ink:         #F5EDE2;
+  --text:        #DDD0C0;
+  --text-mid:    #A89888;
+  --text-light:  #706050;
+  --cream:       #100C08;
+  --cream-warm:  #180E0A;
+  --border:      #2C2018;
+  --border-soft: #221808;
+  --white:       #1A1208;
+  --brand-faint: #2A0A0A;
+  --gold-pale:   #1E1508;
+}
+html.dark body { background: #100C08; }
+html.dark nav {
+  background: rgba(10,6,4,0.95);
+  border-bottom-color: rgba(184,131,42,0.15);
+}
+html.dark .press-bar {
+  background: #1A1208;
+  border-bottom-color: #2C2018;
+}
+html.dark .press-pill { background: #221808; border-color: #2C2018; }
+html.dark .press-pill.gold { background: #1E1508; }
+html.dark .press-pill.review-pill { background: #0A1020; border-color: #1a2840; color: #6090d0; }
+html.dark .menu-card,
+html.dark .review-card,
+html.dark .pitch-item,
+html.dark .vision-card,
+html.dark .presence-item,
+html.dark .catering-form,
+html.dark .hours-card { background: #1A1208; border-color: #2C2018; }
+html.dark .catering-item { background: rgba(255,255,255,0.04); border-color: rgba(184,131,42,0.12); }
+html.dark .map-wrap { border-color: #2C2018; }
+html.dark .form-row input,
+html.dark .form-row select,
+html.dark .form-row textarea { background: #100C08; border-color: #2C2018; color: var(--text); }
+html.dark #order { background: linear-gradient(168deg, #0A0604 0%, #180A08 100%); }
+html.dark #catering { background: #180E0A; }
+html.dark footer { background: #0A0604; }
+html.dark .footer-social { background: rgba(255,255,255,0.04); border-color: rgba(255,255,255,0.07); }
+html.dark .story-pullquote { background: rgba(139,26,26,0.12); }
+
+/* ── TOGGLE BUTTON ───────────────────────────────────────────── */
+.theme-toggle {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: background 0.18s; flex-shrink: 0;
+  color: rgba(255,255,255,0.6); font-size: 16px; line-height: 1;
+  margin-left: 8px;
+}
+.theme-toggle:hover { background: rgba(255,255,255,0.14); }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -669,6 +724,7 @@ footer {
     <a href="#catering">Catering</a>
     <a href="#location">Visit Us</a>
     <a href="#order" class="nav-cta">Order Online</a>
+    <button class="theme-toggle" id="themeToggle" title="Toggle dark / light mode">☀️</button>
   </div>
 </nav>
 
@@ -1259,6 +1315,23 @@ footer {
 
 <script>
 (function() {
+  // ── Dark / Light toggle ────────────────────────────────────────
+  var btn = document.getElementById('themeToggle');
+  var html = document.documentElement;
+  var dark = localStorage.getItem('theme') === 'dark' ||
+    (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+  function applyTheme(isDark) {
+    html.classList.toggle('dark', isDark);
+    btn.textContent = isDark ? '☀️' : '🌙';
+    btn.title = isDark ? 'Switch to light mode' : 'Switch to dark mode';
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+  }
+  applyTheme(dark);
+  btn.addEventListener('click', function() {
+    applyTheme(!html.classList.contains('dark'));
+  });
+
   // ── Hero slideshow ─────────────────────────────────────────────
   var heroSlides = document.querySelectorAll('.hero-slide');
   var heroCurrent = 0;
