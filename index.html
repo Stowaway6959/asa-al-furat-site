@@ -815,10 +815,9 @@ footer {
   .nav-logo span { font-size: 7px; letter-spacing: 1px; }
   .theme-toggle { width: 28px; height: 28px; font-size: 12px; margin-left: 4px; }
   #home { padding: 70px 16px 50px; }
-  .press-bar { flex-direction: row; flex-wrap: nowrap; align-items: center; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 8px 16px; gap: 8px; }
-  .press-bar::-webkit-scrollbar { display: none; }
-  .press-bar-row { display: contents; }
-  .press-label { flex-shrink: 0; font-size: 8px; margin-right: 0; }
+  .press-bar { flex-direction: column; align-items: flex-start; padding: 10px 16px; gap: 8px; }
+  .press-bar-row { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; justify-content: flex-start; width: 100%; }
+  .press-label { font-size: 8px; margin-right: 2px; }
   .wrap { padding: 0 16px; }
   .section-pad { padding: 40px 0; }
   .eyebrow { font-size: 8px; letter-spacing: 1.5px; margin-bottom: 10px; }
