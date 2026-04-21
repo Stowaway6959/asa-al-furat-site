@@ -183,11 +183,19 @@ h1.hero-title em { color: var(--gold-mid); font-style: italic; }
   font-size: 11px; font-weight: 600; padding: 5px 14px;
   border-radius: 20px; white-space: nowrap;
   background: #f6f6f6; color: var(--text-mid); border: 1px solid var(--border-soft);
+  text-decoration: none; transition: background 0.18s, border-color 0.18s;
 }
+a.press-pill:hover { background: var(--border-soft); border-color: var(--border); }
 .press-pill.gold {
   background: var(--gold-pale); color: #7A5A10;
   border-color: rgba(184,131,42,0.3);
 }
+a.press-pill.gold:hover { background: #f0e0c0; }
+.press-pill.review-pill {
+  background: #f0f7ff; color: #1a4fa0;
+  border-color: #c8d8ff;
+}
+a.press-pill.review-pill:hover { background: #e0ecff; }
 
 /* ── SECTION WRAPPERS ─────────────────────────────────────────── */
 .wrap { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
@@ -700,12 +708,15 @@ footer {
 <!-- ── AS SEEN IN ─────────────────────────────────────────────── -->
 <div class="press-bar">
   <span class="press-label">As Seen In</span>
-  <div class="press-pill gold">📰 417 Magazine</div>
-  <div class="press-pill gold">📰 Springfield Daily Citizen</div>
-  <div class="press-pill gold">📰 Springfield Business Journal</div>
-  <div class="press-pill">📰 Around the Ozarks</div>
-  <div class="press-pill">🏙️ Springfield CVB</div>
-  <div class="press-pill">☕ joe.coffee · 5 Stars</div>
+  <a href="https://www.417mag.com/food-drink/story-behind-asa-al-furat/" target="_blank" rel="noopener" class="press-pill gold">📰 417 Magazine</a>
+  <a href="https://sgfcitizen.org/economy-growth/business/21-year-old-refugee-opens-iraqi-bakery-in-springfield/" target="_blank" rel="noopener" class="press-pill gold">📰 Springfield Daily Citizen</a>
+  <a href="https://sbj.net/stories/open-for-business-asa-al-furat,102045" target="_blank" rel="noopener" class="press-pill gold">📰 Springfield Business Journal</a>
+  <a href="https://aroundtheozarks.com/2025/10/29/asa-al-furat-now-open-in-springfield/" target="_blank" rel="noopener" class="press-pill">📰 Around the Ozarks</a>
+  <a href="https://www.springfieldmo.org/eat/asa-al-furat/" target="_blank" rel="noopener" class="press-pill">🏙️ Springfield CVB</a>
+  <a href="https://joe.coffee/locations/mo/springfield/asa-al-furat-springfield/" target="_blank" rel="noopener" class="press-pill">☕ joe.coffee · 5 Stars</a>
+  <span class="press-label" style="margin-left:8px;">Reviews</span>
+  <a href="https://www.google.com/maps/search/Asa+Al-Furat+207+Park+Central+E+Springfield+MO/" target="_blank" rel="noopener" class="press-pill review-pill">⭐ Google Reviews</a>
+  <a href="https://www.yelp.com/biz/asa-al-furat-springfield" target="_blank" rel="noopener" class="press-pill review-pill">⭐ Yelp</a>
 </div>
 
 <!-- ── STORY ──────────────────────────────────────────────────── -->
