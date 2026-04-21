@@ -226,13 +226,13 @@ nav {
 }
 .hero-rule {
   display: flex; align-items: center; justify-content: center; gap: 14px;
-  margin-bottom: 22px; max-width: 100%; overflow: hidden;
+  margin-bottom: 22px; max-width: 100%; flex-wrap: wrap;
 }
 .hero-rule-line { width: 40px; height: 1px; background: rgba(184,131,42,0.45); flex-shrink: 0; }
 .hero-eyebrow {
   font-size: 10px; font-weight: 600; letter-spacing: 4px;
   text-transform: uppercase; color: var(--gold-mid);
-  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0;
+  min-width: 0; text-align: center;
 }
 h1.hero-title {
   font-family: 'Playfair Display', serif;
@@ -827,7 +827,9 @@ footer {
   .hero-arabic { font-size: 24px; letter-spacing: 1px; margin-bottom: 12px; }
   h1.hero-title { font-size: clamp(20px, 6.5vw, 30px); margin-bottom: 8px; }
   h1.hero-title br { display: block; }
-  .hero-eyebrow { font-size: 7px; letter-spacing: 1.5px; }
+  .hero-eyebrow { font-size: 7px; letter-spacing: 0.8px; }
+  .hero-rule { gap: 8px; }
+  .hero-rule-line { display: none; }
   .hero-rule { gap: 8px; margin-bottom: 12px; }
   .hero-rule-line { width: 20px; }
   .hero-sub { font-size: 12px; margin-bottom: 8px; }
