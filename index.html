@@ -141,7 +141,8 @@ body.menu-open { overflow: hidden; }
 .mobile-link-cta:hover, .mobile-link-cta:active { background: var(--brand-deep); }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
+body { overflow-x: hidden; }
 body {
   font-family: 'Inter', -apple-system, sans-serif;
   background: var(--cream);
@@ -225,12 +226,13 @@ nav {
 }
 .hero-rule {
   display: flex; align-items: center; justify-content: center; gap: 14px;
-  margin-bottom: 22px;
+  margin-bottom: 22px; max-width: 100%; overflow: hidden;
 }
-.hero-rule-line { width: 40px; height: 1px; background: rgba(184,131,42,0.45); }
+.hero-rule-line { width: 40px; height: 1px; background: rgba(184,131,42,0.45); flex-shrink: 0; }
 .hero-eyebrow {
   font-size: 10px; font-weight: 600; letter-spacing: 4px;
   text-transform: uppercase; color: var(--gold-mid);
+  overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0;
 }
 h1.hero-title {
   font-family: 'Playfair Display', serif;
@@ -813,9 +815,10 @@ footer {
   .nav-logo span { font-size: 7px; letter-spacing: 1px; }
   .theme-toggle { width: 28px; height: 28px; font-size: 12px; margin-left: 4px; }
   #home { padding: 70px 16px 50px; }
-  .press-bar { padding: 8px 0; flex-direction: column; align-items: stretch; gap: 4px; }
-  .press-bar-row { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 4px 16px; justify-content: flex-start; width: 100%; }
-  .press-bar-row::-webkit-scrollbar { display: none; }
+  .press-bar { flex-direction: row; flex-wrap: nowrap; align-items: center; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 8px 16px; gap: 8px; }
+  .press-bar::-webkit-scrollbar { display: none; }
+  .press-bar-row { display: contents; }
+  .press-label { flex-shrink: 0; font-size: 8px; margin-right: 0; }
   .wrap { padding: 0 16px; }
   .section-pad { padding: 40px 0; }
   .eyebrow { font-size: 8px; letter-spacing: 1.5px; margin-bottom: 10px; }
