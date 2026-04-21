@@ -628,6 +628,9 @@ footer {
   nav { padding: 0 24px; }
   .nav-links { display: none; }
   .wrap { padding: 0 24px; }
+  #home { padding: 90px 24px 72px; }
+  .press-bar { padding: 12px 24px; }
+  .section-pad { padding: 64px 0; }
   .story-grid, .catering-grid, .location-grid { grid-template-columns: 1fr; gap: 36px; }
   .menu-grid { grid-template-columns: 1fr 1fr; }
   .reviews-grid { grid-template-columns: 1fr; }
@@ -635,6 +638,234 @@ footer {
   .insta-grid { grid-template-columns: repeat(3,1fr); }
   .delivery-cards { flex-direction: column; align-items: center; }
   .delivery-card { width: 100%; max-width: 320px; flex-direction: row; }
+  .order-inner { padding: 0 24px; }
+  .catering-form { padding: 24px; }
+  h2.section-title { font-size: clamp(22px, 5vw, 36px); }
+  .hero-arabic { font-size: 36px; letter-spacing: 4px; margin-bottom: 20px; }
+  h1.hero-title { font-size: clamp(28px, 7vw, 48px); margin-bottom: 10px; }
+  .hero-sub { font-size: 14px; }
+  .hero-quote { font-size: 14px; max-width: 100%; padding-left: 14px; margin: 0 auto 28px; }
+  .hero-btns { flex-wrap: wrap; gap: 10px; margin-bottom: 32px; }
+  .btn-primary, .btn-ghost { padding: 12px 24px; font-size: 13px; }
+  .hero-meta { gap: 16px; font-size: 11px; }
+  .hero-meta span { display: block; }
+  .location-grid { gap: 28px; }
+  .map-wrap iframe { height: 280px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 24px; }
+  .footer-bottom { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .press-bar-row { gap: 8px; }
+  .press-label { margin-right: 4px; }
+  .press-pill { font-size: 10px; padding: 4px 12px; }
+}
+
+@media (max-width: 640px) {
+  body { font-size: 14px; }
+  nav { padding: 0 20px; height: 56px; }
+  .nav-logo { font-size: 16px; }
+  .nav-logo span { font-size: 8px; letter-spacing: 1.5px; }
+  .theme-toggle { width: 32px; height: 32px; font-size: 14px; }
+  #home { padding: 80px 20px 60px; min-height: auto; }
+  .press-bar { padding: 10px 20px; gap: 6px; }
+  .wrap { padding: 0 20px; }
+  .section-pad { padding: 48px 0; }
+  .eyebrow { font-size: 9px; letter-spacing: 2px; }
+  h2.section-title { font-size: clamp(20px, 6vw, 32px); margin-bottom: 12px; }
+  .section-body { font-size: 14px; }
+  .hero-arabic { font-size: 28px; letter-spacing: 2px; margin-bottom: 14px; }
+  h1.hero-title { font-size: clamp(24px, 7.5vw, 40px); line-height: 1.15; }
+  h1.hero-title br { display: none; }
+  .hero-eyebrow { font-size: 8px; letter-spacing: 2px; }
+  .hero-rule { gap: 10px; margin-bottom: 14px; }
+  .hero-rule-line { width: 30px; }
+  .hero-sub { font-size: 13px; margin-bottom: 10px; }
+  .hero-quote { font-size: 13px; max-width: 100%; padding-left: 12px; margin: 0 auto 20px; border-left-width: 2px; }
+  .hero-quote cite { font-size: 10px; margin-top: 8px; }
+  .hero-btns { gap: 8px; margin-bottom: 24px; }
+  .btn-primary { padding: 11px 18px; font-size: 12px; }
+  .btn-ghost { padding: 11px 18px; font-size: 12px; }
+  .hero-meta { gap: 12px; font-size: 10px; }
+  .hero-meta span { display: block; text-align: center; }
+  .menu-grid { grid-template-columns: 1fr; gap: 14px; }
+  .menu-card { border-radius: 10px; }
+  .menu-photo { height: 120px; font-size: 36px; }
+  .menu-card-body { padding: 12px 14px; }
+  .menu-card-name { font-size: 13px; }
+  .menu-card-arabic { font-size: 11px; }
+  .menu-card-desc { font-size: 10px; }
+  .order-inner { padding: 0 20px; }
+  .delivery-cards { gap: 12px; margin-bottom: 24px; }
+  .delivery-card { padding: 16px 18px; min-width: 160px; }
+  .delivery-card svg { width: 40px; height: 40px; }
+  .delivery-card-name { font-size: 13px; }
+  .delivery-card-sub { font-size: 10px; }
+  .order-divider { max-width: 100%; margin: 0 auto 20px; }
+  .btn-direct { padding: 12px 24px; font-size: 12px; }
+  .direct-note { font-size: 10px; }
+  .catering-grid { gap: 32px; }
+  .catering-items { gap: 10px; margin-top: 16px; }
+  .catering-item { padding: 12px 14px; gap: 10px; }
+  .catering-item-icon { font-size: 18px; }
+  .catering-item-name { font-size: 12px; }
+  .catering-item-desc { font-size: 11px; }
+  .catering-form { padding: 20px; }
+  .catering-form-title { font-size: 18px; margin-bottom: 18px; }
+  .form-row { margin-bottom: 14px; }
+  .form-row label { font-size: 9px; margin-bottom: 5px; }
+  .form-row input, .form-row select, .form-row textarea { padding: 10px 12px; font-size: 13px; }
+  .form-2col { gap: 10px; }
+  .form-submit { padding: 12px; font-size: 13px; }
+  .location-grid { gap: 20px; }
+  .map-wrap iframe { height: 240px; }
+  .hours-title { font-size: 18px; margin-bottom: 14px; }
+  .hours-row { padding: 8px 0; font-size: 12px; }
+  .contact-row { font-size: 12px; gap: 8px; }
+  .contact-row svg { width: 16px; height: 16px; }
+  .reviews-header { margin-bottom: 32px; }
+  .reviews-stars { font-size: 22px; }
+  .review-card { padding: 18px; }
+  .review-card-stars { font-size: 12px; margin-bottom: 10px; }
+  .review-text { font-size: 14px; margin-bottom: 14px; }
+  .review-avatar { width: 32px; height: 32px; font-size: 12px; }
+  .review-name { font-size: 12px; }
+  .review-where { font-size: 9px; }
+  .insta-header { margin-bottom: 24px; gap: 12px; }
+  .insta-title { font-size: 18px; }
+  .insta-follow-btn { padding: 9px 16px; font-size: 12px; }
+  .insta-grid { grid-template-columns: repeat(2,1fr); gap: 4px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 20px; padding-bottom: 24px; }
+  .footer-logo-text { font-size: 20px; }
+  .footer-arabic { font-size: 14px; margin-bottom: 12px; }
+  .footer-tagline { font-size: 12px; margin-bottom: 14px; }
+  .footer-col-head { margin-bottom: 12px; }
+  .footer-col a, .footer-col p { font-size: 12px; margin-bottom: 9px; }
+  .footer-socials { gap: 8px; }
+  .footer-social-icon { width: 36px; height: 36px; }
+  .footer-social svg { width: 20px; height: 20px; }
+  .footer-social-name { font-size: 8px; }
+  .footer-bottom { font-size: 10px; }
+  .press-bar-row { flex-wrap: wrap; }
+  .press-pill { font-size: 9px; padding: 3px 10px; }
+}
+
+@media (max-width: 480px) {
+  * { -webkit-tap-highlight-color: transparent; }
+  body { font-size: 13px; }
+  nav { padding: 0 16px; height: 52px; gap: 12px; }
+  .nav-logo { font-size: 14px; gap: 0px; }
+  .nav-logo span { font-size: 7px; letter-spacing: 1px; }
+  .theme-toggle { width: 28px; height: 28px; font-size: 12px; margin-left: 4px; }
+  #home { padding: 70px 16px 50px; }
+  .press-bar { padding: 8px 16px; flex-direction: row; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .press-bar-row { flex-wrap: nowrap; white-space: nowrap; }
+  .wrap { padding: 0 16px; }
+  .section-pad { padding: 40px 0; }
+  .eyebrow { font-size: 8px; letter-spacing: 1.5px; margin-bottom: 10px; }
+  h2.section-title { font-size: clamp(18px, 8vw, 28px); margin-bottom: 10px; line-height: 1.2; }
+  .section-body { font-size: 13px; line-height: 1.7; }
+  .hero-arabic { font-size: 24px; letter-spacing: 1px; margin-bottom: 12px; }
+  h1.hero-title { font-size: clamp(22px, 8vw, 36px); margin-bottom: 8px; }
+  .hero-eyebrow { font-size: 7px; letter-spacing: 1.5px; }
+  .hero-rule { gap: 8px; margin-bottom: 12px; }
+  .hero-rule-line { width: 20px; }
+  .hero-sub { font-size: 12px; margin-bottom: 8px; }
+  .hero-quote { font-size: 12px; padding-left: 10px; margin: 0 auto 16px; line-height: 1.5; max-width: 100%; }
+  .hero-quote cite { font-size: 9px; margin-top: 6px; }
+  .hero-btns { flex-direction: column; gap: 6px; margin-bottom: 20px; }
+  .btn-primary, .btn-ghost { width: 100%; padding: 10px 16px; font-size: 12px; }
+  .hero-meta { gap: 8px; font-size: 9px; flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .hero-meta span { display: inline-block; white-space: nowrap; }
+  .story-grid { gap: 20px; }
+  .story-photo { aspect-ratio: 1; margin-top: 12px; }
+  .story-photo-main { font-size: 18px; }
+  .story-photo-sub { font-size: 9px; }
+  .story-text p { font-size: 13px; margin-bottom: 14px; }
+  .story-pullquote { padding: 12px 14px; margin: 16px 0; font-size: 13px; line-height: 1.5; border-left-width: 2px; }
+  .story-pullquote cite { font-size: 9px; margin-top: 6px; }
+  .story-tags { gap: 6px; margin-top: 14px; }
+  .story-tag { font-size: 10px; padding: 3px 10px; }
+  .menu-header { gap: 12px; margin-bottom: 24px; }
+  .menu-cats { gap: 6px; }
+  .menu-cat { font-size: 11px; padding: 5px 12px; }
+  .menu-grid { grid-template-columns: 1fr; gap: 12px; }
+  .menu-photo { height: 100px; font-size: 32px; }
+  .menu-card-body { padding: 10px 12px; }
+  .menu-card-name { font-size: 12px; }
+  .menu-card-arabic { font-size: 10px; }
+  .menu-card-desc { font-size: 9px; margin-bottom: 8px; }
+  .menu-price { font-size: 14px; }
+  .menu-order { font-size: 9px; padding: 3px 8px; }
+  #order { padding: 56px 0; }
+  .order-inner { padding: 0 16px; }
+  .order-inner .eyebrow { color: var(--gold-mid); }
+  .order-inner h2 { font-size: 20px; }
+  .order-inner .section-body { font-size: 12px; margin: 0 auto 32px; }
+  .delivery-cards { gap: 10px; margin-bottom: 20px; }
+  .delivery-card { padding: 14px 16px; min-width: 140px; gap: 8px; }
+  .delivery-card svg { width: 36px; height: 36px; }
+  .delivery-card-name { font-size: 12px; }
+  .delivery-card-sub { font-size: 9px; }
+  .delivery-card-link { font-size: 10px; }
+  .order-divider { margin: 0 auto 16px; font-size: 9px; gap: 8px; }
+  .btn-direct { padding: 10px 20px; font-size: 11px; gap: 8px; }
+  .direct-note { font-size: 9px; margin-top: 8px; }
+  #catering { padding: 56px 0; }
+  .catering-grid { gap: 20px; }
+  .catering-items { gap: 8px; margin-top: 12px; }
+  .catering-item { padding: 10px 12px; gap: 8px; border-radius: 8px; }
+  .catering-item-icon { font-size: 16px; }
+  .catering-item-name { font-size: 11px; }
+  .catering-item-desc { font-size: 10px; margin-top: 2px; }
+  .catering-form { padding: 16px; border-radius: 12px; }
+  .catering-form-title { font-size: 16px; margin-bottom: 14px; }
+  .form-row { margin-bottom: 12px; }
+  .form-row label { font-size: 8px; margin-bottom: 4px; letter-spacing: 1px; }
+  .form-row input, .form-row select, .form-row textarea { padding: 9px 11px; font-size: 12px; border-radius: 6px; }
+  .form-row textarea { min-height: 72px; }
+  .form-2col { grid-template-columns: 1fr; gap: 12px; }
+  .form-submit { padding: 11px; font-size: 12px; border-radius: 6px; }
+  .form-note { font-size: 10px; }
+  #location { padding: 56px 0; }
+  .location-grid { gap: 16px; grid-template-columns: 1fr; }
+  .map-wrap { border-radius: 12px; }
+  .map-wrap iframe { height: 200px; }
+  .map-directions { padding: 11px 16px; font-size: 12px; gap: 8px; }
+  .hours-title { font-size: 16px; margin-bottom: 12px; }
+  .hours-row { padding: 7px 0; font-size: 11px; }
+  .contact-block { margin-top: 16px; gap: 8px; }
+  .contact-row { font-size: 11px; gap: 8px; }
+  .contact-row svg { width: 14px; height: 14px; margin-top: 1px; }
+  #reviews { padding: 56px 0; }
+  .reviews-header { margin-bottom: 24px; }
+  .reviews-stars { font-size: 18px; margin-bottom: 8px; }
+  .review-card { padding: 14px; border-radius: 10px; }
+  .review-card-stars { font-size: 11px; margin-bottom: 8px; }
+  .review-text { font-size: 13px; line-height: 1.6; margin-bottom: 10px; }
+  .review-author { gap: 8px; }
+  .review-avatar { width: 28px; height: 28px; font-size: 10px; }
+  .review-name { font-size: 11px; }
+  .review-where { font-size: 8px; }
+  #instagram { padding: 56px 0; }
+  .insta-header { margin-bottom: 16px; flex-direction: column; gap: 12px; }
+  .insta-title { font-size: 16px; }
+  .insta-follow-btn { width: 100%; justify-content: center; padding: 8px 16px; font-size: 11px; }
+  .insta-follow-btn svg { width: 16px; height: 16px; }
+  .insta-grid { grid-template-columns: repeat(2,1fr); gap: 3px; }
+  .insta-cell { border-radius: 4px; }
+  footer { padding: 48px 16px 24px; }
+  .footer-grid { grid-template-columns: 1fr; gap: 16px; padding-bottom: 16px; }
+  .footer-logo-text { font-size: 18px; }
+  .footer-arabic { font-size: 12px; margin-bottom: 8px; }
+  .footer-tagline { font-size: 11px; margin-bottom: 12px; line-height: 1.6; }
+  .footer-socials { gap: 6px; }
+  .footer-social-icon { width: 32px; height: 32px; }
+  .footer-social svg { width: 18px; height: 18px; }
+  .footer-social-name { font-size: 7px; }
+  .footer-col-head { font-size: 8px; margin-bottom: 10px; }
+  .footer-col a, .footer-col p { font-size: 11px; margin-bottom: 7px; }
+  .footer-bottom { font-size: 9px; padding-top: 12px; gap: 8px; flex-direction: column; }
+  .press-bar-row { gap: 6px; }
+  .press-label { font-size: 8px; margin-right: 2px; }
+  .press-pill { font-size: 8px; padding: 2px 8px; }
 }
 </style>
 </head>
