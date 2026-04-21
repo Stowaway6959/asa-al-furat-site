@@ -81,18 +81,32 @@ nav {
 /* ── HERO ─────────────────────────────────────────────────────── */
 #home {
   min-height: 100vh;
-  background: linear-gradient(168deg, #18100A 0%, #3D1210 55%, #2A1416 100%);
+  background: #18100A;
   display: flex; align-items: center; justify-content: center;
   text-align: center; padding: 120px 48px 96px;
   position: relative; overflow: hidden;
 }
-#home::before {
+.hero-slides {
+  position: absolute; inset: 0; z-index: 0;
+}
+.hero-slide {
+  position: absolute; inset: 0;
+  background-size: cover; background-position: center;
+  opacity: 0; transition: opacity 1.8s ease;
+}
+.hero-slide.active { opacity: 1; }
+.hero-overlay {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(168deg, rgba(24,16,10,0.80) 0%, rgba(61,18,16,0.70) 55%, rgba(42,20,22,0.80) 100%);
+}
+.hero-overlay::after {
   content: '';
   position: absolute; inset: 0; pointer-events: none;
   background-image:
     repeating-linear-gradient(0deg, rgba(184,131,42,0.025) 0px, rgba(184,131,42,0.025) 1px, transparent 1px, transparent 56px),
     repeating-linear-gradient(90deg, rgba(184,131,42,0.025) 0px, rgba(184,131,42,0.025) 1px, transparent 1px, transparent 56px);
 }
+.hero-content { position: relative; z-index: 2; }
 .hero-arabic {
   font-size: 52px; color: rgba(184,131,42,0.2);
   direction: rtl; letter-spacing: 6px; margin-bottom: 32px;
@@ -198,7 +212,7 @@ h2.section-title {
 }
 .story-photo {
   border-radius: 16px; overflow: hidden; aspect-ratio: 4/5;
-  background: linear-gradient(168deg, #3B1A10 0%, #8B4A20 60%, #C9952A 100%);
+  background: url('https://d194ip2226q57d.cloudfront.net/images/417Mag_Jan26_Origin_byKatySt.Clair_1.original.jpg') center top/cover no-repeat;
   position: relative; display: flex; align-items: flex-end; padding: 28px;
 }
 .story-photo-overlay {
@@ -469,13 +483,19 @@ h2.section-title {
   aspect-ratio: 1; border-radius: 6px; overflow: hidden;
   display: flex; align-items: center; justify-content: center;
   font-size: 36px; position: relative; cursor: default;
-  transition: transform 0.2s;
+  transition: transform 0.2s, opacity 0.7s ease;
 }
 .insta-cell:hover { transform: scale(0.97); }
+.insta-real {
+  background-size: cover !important;
+  background-position: center !important;
+  font-size: 0;
+}
 .insta-hover {
   position: absolute; inset: 0;
   background: rgba(24,16,10,0); transition: background 0.2s;
   display: flex; align-items: center; justify-content: center;
+  font-size: 13px; font-weight: 700; color: #fff; letter-spacing: 0.5px;
 }
 .insta-cell:hover .insta-hover { background: rgba(24,16,10,0.42); }
 
@@ -646,7 +666,12 @@ footer {
 
 <!-- ── HERO ───────────────────────────────────────────────────── -->
 <section id="home">
-  <div>
+  <div class="hero-slides">
+    <div class="hero-slide active" style="background-image:url('https://d194ip2226q57d.cloudfront.net/images/417Mag_Jan26_Origin_byKatySt.Clair_2.original.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('https://d194ip2226q57d.cloudfront.net/images/417Mag_Jan26_Origin_byKatySt.Clair_1.original.jpg')"></div>
+  </div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
     <div class="hero-arabic">عصا الفرات</div>
     <div class="hero-rule">
       <div class="hero-rule-line"></div>
@@ -669,7 +694,7 @@ footer {
       <span><strong>Sunday</strong> 10 AM – 8 PM</span>
       <span>⭐⭐⭐⭐⭐ 5-Star Rating</span>
     </div>
-  </div>
+  </div><!-- end .hero-content -->
 </section>
 
 <!-- ── AS SEEN IN ─────────────────────────────────────────────── -->
@@ -1142,9 +1167,9 @@ footer {
       </a>
     </div>
     <div class="insta-grid">
-      <div class="insta-cell" style="background:linear-gradient(135deg,#C9952A,#8B4A00)">🍯<div class="insta-hover"></div></div>
-      <div class="insta-cell" style="background:linear-gradient(135deg,#E8427A,#8B1A3C)">🌺<div class="insta-hover"></div></div>
-      <div class="insta-cell" style="background:linear-gradient(135deg,#2C1810,#8B4A00)">🫖<div class="insta-hover"></div></div>
+      <div class="insta-cell insta-real" id="ig0" style="background-image:url('https://d194ip2226q57d.cloudfront.net/images/417Mag_Jan26_Origin_byKatySt.Clair_2.original.jpg')"><div class="insta-hover">View</div></div>
+      <div class="insta-cell insta-real" id="ig1" style="background-image:url('https://d194ip2226q57d.cloudfront.net/images/417Mag_Jan26_Origin_byKatySt.Clair_1.original.jpg')"><div class="insta-hover">View</div></div>
+      <div class="insta-cell insta-real" id="ig2" style="background-image:url('https://aroundtheozarks.com/wp-content/uploads/2025/10/BLOG-POST-FEATURED-IMAGE-12-1024x576.png')"><div class="insta-hover">View</div></div>
       <div class="insta-cell" style="background:linear-gradient(135deg,#E8C060,#8B4A00)">✨<div class="insta-hover"></div></div>
       <div class="insta-cell" style="background:linear-gradient(135deg,#F0D8A0,#C09040)">🌹<div class="insta-hover"></div></div>
       <div class="insta-cell" style="background:linear-gradient(135deg,#D4A06A,#8B5A20)">🫓<div class="insta-hover"></div></div>
@@ -1221,5 +1246,47 @@ footer {
   </div>
 </footer>
 
+<script>
+(function() {
+  // ── Hero slideshow ─────────────────────────────────────────────
+  var heroSlides = document.querySelectorAll('.hero-slide');
+  var heroCurrent = 0;
+  if (heroSlides.length > 1) {
+    setInterval(function() {
+      heroSlides[heroCurrent].classList.remove('active');
+      heroCurrent = (heroCurrent + 1) % heroSlides.length;
+      heroSlides[heroCurrent].classList.add('active');
+    }, 6000);
+  }
+
+  // ── Instagram photo rotation ───────────────────────────────────
+  var realPhotos = [
+    'https://d194ip2226q57d.cloudfront.net/images/417Mag_Jan26_Origin_byKatySt.Clair_2.original.jpg',
+    'https://d194ip2226q57d.cloudfront.net/images/417Mag_Jan26_Origin_byKatySt.Clair_1.original.jpg',
+    'https://aroundtheozarks.com/wp-content/uploads/2025/10/BLOG-POST-FEATURED-IMAGE-12-1024x576.png'
+  ];
+  var igCells = [
+    document.getElementById('ig0'),
+    document.getElementById('ig1'),
+    document.getElementById('ig2')
+  ];
+  var igOffset = 0;
+
+  function rotateInsta() {
+    igOffset = (igOffset + 1) % realPhotos.length;
+    igCells.forEach(function(cell, i) {
+      if (!cell) return;
+      var nextUrl = realPhotos[(igOffset + i) % realPhotos.length];
+      cell.style.opacity = '0';
+      setTimeout(function() {
+        cell.style.backgroundImage = "url('" + nextUrl + "')";
+        cell.style.opacity = '1';
+      }, 700);
+    });
+  }
+
+  setInterval(rotateInsta, 4000);
+})();
+</script>
 </body>
 </html>
