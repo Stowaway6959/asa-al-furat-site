@@ -3,9 +3,45 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Asa Al-Furat | Iraqi Bakery & Coffee · Springfield, MO</title>
+<title>Asa Al-Furat | Iraqi Bakery & Coffee | Springfield, MO</title>
+<meta name="description" content="Springfield's only authentic Iraqi bakery and coffee shop. Handmade baklava, kunafa, karak tea, and traditional Iraqi sweets. Downtown Springfield, MO.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Bakery",
+  "name": "Asa Al-Furat",
+  "alternateName": "عصا الفرات",
+  "description": "Springfield's only authentic Iraqi bakery and coffee shop. Handmade baklava, kunafa, karak tea, and traditional Iraqi sweets.",
+  "url": "https://asaalfurat.com",
+  "telephone": "+1-417-000-0000",
+  "image": "https://d194ip2226q57d.cloudfront.net/images/417Mag_Jan26_Origin_byKatySt.Clair_2.original.jpg",
+  "servesCuisine": "Iraqi",
+  "priceRange": "$",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "207 Park Central E",
+    "addressLocality": "Springfield",
+    "addressRegion": "MO",
+    "postalCode": "65806",
+    "addressCountry": "US"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 37.2090,
+    "longitude": -93.2923
+  },
+  "openingHoursSpecification": [
+    {"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday","Friday","Saturday"],"opens":"09:00","closes":"20:00"},
+    {"@type":"OpeningHoursSpecification","dayOfWeek":"Sunday","opens":"10:00","closes":"20:00"}
+  ],
+  "sameAs": [
+    "https://instagram.com/asa.alfurat",
+    "https://www.facebook.com/p/ASA-Al-FURAT-61581178408603/"
+  ]
+}
+</script>
 <style>
 /* ── PALETTE ─────────────────────────────────────────────────────
    Brand: Pomegranate crimson  — deep, rich, culturally authentic
@@ -261,6 +297,41 @@ a.press-pill.gold:hover { background: #f0e0c0; }
   border-color: #c8d8ff;
 }
 a.press-pill.review-pill:hover { background: #e0ecff; }
+
+/* ── CATERING NAV HIGHLIGHT ───────────────────────────────────── */
+.nav-catering {
+  color: var(--gold-mid) !important;
+  font-weight: 700 !important;
+  border-bottom: 1.5px solid rgba(184,131,42,0.45);
+  padding-bottom: 2px;
+}
+
+/* ── DELIVERY CARD COMING SOON ────────────────────────────────── */
+.delivery-card.soon {
+  opacity: 0.5; pointer-events: none; cursor: default; position: relative;
+}
+.delivery-card.soon::after {
+  content: 'Coming Soon';
+  position: absolute; top: 10px; right: 10px;
+  font-size: 8px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase;
+  background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.6);
+  padding: 3px 8px; border-radius: 4px; border: 1px solid rgba(255,255,255,0.15);
+}
+
+/* ── BOTTOM CTA ───────────────────────────────────────────────── */
+.bottom-cta {
+  background: var(--ink);
+  padding: 72px 48px; text-align: center;
+}
+.bottom-cta .eyebrow { color: var(--gold-mid); }
+.bottom-cta h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(26px, 3.5vw, 40px); font-weight: 700;
+  color: #fff; margin-bottom: 10px; letter-spacing: -0.5px;
+}
+.bottom-cta p { font-size: 15px; color: rgba(255,255,255,0.45); margin-bottom: 32px; }
+.bottom-cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+html.dark .bottom-cta { background: #0A0604; }
 
 /* ── SECTION WRAPPERS ─────────────────────────────────────────── */
 .wrap { max-width: 1100px; margin: 0 auto; padding: 0 48px; }
@@ -735,7 +806,7 @@ footer {
   <div class="nav-links">
     <a href="#story">Our Story</a>
     <a href="#menu">Menu</a>
-    <a href="#catering">Catering</a>
+    <a href="#catering" class="nav-catering">Catering</a>
     <a href="#location">Visit Us</a>
     <a href="#order" class="nav-cta">Order Online</a>
     <button class="theme-toggle" id="themeToggle" title="Toggle dark / light mode">☀️</button>
@@ -1018,23 +1089,23 @@ footer {
         <div class="delivery-card-link">Order →</div>
       </a>
 
-      <a href="https://www.ubereats.com" target="_blank" class="delivery-card">
+      <div class="delivery-card soon">
         <svg><use href="#icon-ubereats"/></svg>
         <div>
           <div class="delivery-card-name">Uber Eats</div>
           <div class="delivery-card-sub">Delivery</div>
         </div>
-        <div class="delivery-card-link">Order →</div>
-      </a>
+        <div class="delivery-card-link">—</div>
+      </div>
 
-      <a href="https://www.grubhub.com" target="_blank" class="delivery-card">
+      <div class="delivery-card soon">
         <svg><use href="#icon-grubhub"/></svg>
         <div>
           <div class="delivery-card-name">Grubhub</div>
           <div class="delivery-card-sub">Delivery</div>
         </div>
-        <div class="delivery-card-link">Order →</div>
-      </a>
+        <div class="delivery-card-link">—</div>
+      </div>
 
     </div>
     <div class="order-divider">or save on fees</div>
@@ -1078,7 +1149,7 @@ footer {
           </div>
         </div>
       </div>
-      <div class="catering-form">
+      <form class="catering-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
         <div class="catering-form-title">Request a Catering Quote</div>
         <div class="form-row">
           <label>Your Name</label>
@@ -1113,9 +1184,9 @@ footer {
           <label>Tell Us More</label>
           <textarea placeholder="Approximate guest count, items of interest, any special requests…"></textarea>
         </div>
-        <button class="form-submit">Send Catering Request</button>
+        <button type="submit" class="form-submit">Send Catering Request</button>
         <p class="form-note">We reply within one business day.</p>
-      </div>
+      </form>
     </div>
   </div>
 </section>
@@ -1257,6 +1328,18 @@ footer {
       <div class="insta-cell" style="background:linear-gradient(135deg,#C87040,#8B3A00)">🧋<div class="insta-hover"></div></div>
       <div class="insta-cell" style="background:linear-gradient(135deg,#8B4A00,#5C2800)">🥮<div class="insta-hover"></div></div>
     </div>
+  </div>
+</section>
+
+<!-- ── BOTTOM CTA ─────────────────────────────────────────────── -->
+<section class="bottom-cta">
+  <div class="eyebrow">Ready to Order?</div>
+  <h2>Fresh Iraqi Pastries — Downtown Springfield</h2>
+  <p>Handmade daily. Pick up in store or get it delivered.</p>
+  <div class="bottom-cta-btns">
+    <a href="https://www.doordash.com/store/asa-al-furat-springfield-40497555/" target="_blank" class="btn-primary" style="font-size:15px;padding:16px 36px;">Order on DoorDash</a>
+    <a href="#catering" class="btn-ghost" style="font-size:15px;padding:16px 36px;">Book Catering</a>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=207+Park+Central+E,+Springfield,+MO+65806" target="_blank" class="btn-ghost" style="font-size:15px;padding:16px 36px;">Get Directions</a>
   </div>
 </section>
 
