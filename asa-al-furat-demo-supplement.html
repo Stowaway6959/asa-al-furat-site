@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asa Al-Furat — Demo Site Supplement</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #f5f5f5;
+    color: #1c1c1c;
+    font-size: 13px;
+    line-height: 1.5;
+    padding: 40px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  a { color: #1a4fa0; }
+
+  header {
+    border-bottom: 3px solid #8B1A1A;
+    padding-bottom: 20px;
+    margin-bottom: 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  header h1 { font-size: 24px; font-weight: 700; letter-spacing: -0.5px; }
+  header .sub { font-size: 11px; color: #888; margin-top: 3px; }
+  .header-right { text-align: right; font-size: 11px; color: #888; }
+  .header-right strong { display: block; font-size: 13px; color: #1c1c1c; font-weight: 600; }
+
+  .section-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 2.5px;
+    text-transform: uppercase; color: #999;
+    margin: 28px 0 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e4e4e4;
+  }
+
+  /* ── checklist grid ── */
+  .check-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 4px;
+  }
+  .check-col { display: flex; flex-direction: column; gap: 6px; }
+  .check-item {
+    display: flex; align-items: flex-start; gap: 9px;
+    background: #fff; border: 1px solid #e8e8e8;
+    border-radius: 8px; padding: 10px 12px;
+  }
+  .check-item.done { border-left: 3px solid #22a350; }
+  .check-item.partial { border-left: 3px solid #e09000; }
+  .check-item.missing { border-left: 3px solid #cc2222; }
+  .check-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+  .check-label { font-size: 12px; font-weight: 600; color: #1c1c1c; margin-bottom: 2px; }
+  .check-note { font-size: 11px; color: #777; line-height: 1.45; }
+
+  /* ── demo link banner ── */
+  .demo-banner {
+    background: #8B1A1A; color: #fff;
+    border-radius: 10px; padding: 18px 24px;
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 4px;
+  }
+  .demo-banner-left { font-size: 13px; line-height: 1.6; }
+  .demo-banner-left strong { font-size: 15px; display: block; margin-bottom: 2px; }
+  .demo-url {
+    display: inline-block;
+    background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 5px; padding: 8px 18px;
+    font-size: 12px; font-weight: 700; color: #fff; letter-spacing: 0.3px;
+    text-decoration: none; white-space: nowrap;
+  }
+
+  /* ── proposal table ── */
+  table {
+    width: 100%; border-collapse: collapse; background: #fff;
+    border: 1px solid #e4e4e4; border-radius: 10px; overflow: hidden;
+    font-size: 12px;
+  }
+  thead tr { background: #1c1c1c; color: #fff; }
+  thead th {
+    padding: 10px 14px; text-align: left;
+    font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  }
+  tbody tr { border-bottom: 1px solid #f0f0f0; }
+  tbody tr:last-child { border-bottom: none; }
+  tbody td { padding: 11px 14px; vertical-align: top; }
+  tbody tr:nth-child(even) { background: #fafafa; }
+  .row-item { font-weight: 700; color: #1c1c1c; margin-bottom: 2px; }
+  .row-desc { font-size: 11px; color: #666; line-height: 1.45; }
+  .price { font-weight: 700; color: #8B1A1A; white-space: nowrap; }
+  .timeline { font-size: 11px; color: #555; white-space: nowrap; }
+  .total-row { background: #fdf5f5 !important; }
+  .total-row td { font-weight: 700; font-size: 13px; }
+
+  /* ── ROI box ── */
+  .roi-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+  }
+  .roi-card {
+    background: #fff; border: 1px solid #e8e8e8;
+    border-radius: 8px; padding: 14px 16px;
+    text-align: center;
+  }
+  .roi-num { font-size: 22px; font-weight: 700; color: #8B1A1A; margin-bottom: 3px; }
+  .roi-label { font-size: 10px; color: #777; line-height: 1.4; }
+
+  /* ── next steps ── */
+  .steps { display: flex; flex-direction: column; gap: 8px; }
+  .step {
+    display: flex; gap: 12px; align-items: flex-start;
+    background: #fff; border: 1px solid #e8e8e8;
+    border-radius: 8px; padding: 12px 14px;
+  }
+  .step-num {
+    width: 24px; height: 24px; border-radius: 50%;
+    background: #8B1A1A; color: #fff;
+    font-size: 11px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .step-title { font-size: 12px; font-weight: 700; color: #1c1c1c; margin-bottom: 2px; }
+  .step-detail { font-size: 11px; color: #666; line-height: 1.45; }
+
+  /* ── legend ── */
+  .legend { display: flex; gap: 18px; margin-bottom: 10px; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 10px; color: #666; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 2px; flex-shrink: 0; }
+
+  /* ── footer ── */
+  .doc-footer {
+    margin-top: 32px; padding-top: 16px;
+    border-top: 1px solid #e4e4e4;
+    display: flex; justify-content: space-between;
+    font-size: 10px; color: #aaa;
+  }
+
+  @media print {
+    body { background: #fff; padding: 24px; }
+    .demo-banner { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    thead tr { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .step-num { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .check-item.done { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .check-item.partial { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .check-item.missing { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Asa Al-Furat — Demo Site Supplement</h1>
+    <div class="sub">What's built · What's missing · Price proposal · Next steps</div>
+  </div>
+  <div class="header-right">
+    <strong>Asa Al-Furat Iraqi Bakery & Coffee</strong>
+    207 Park Central E · Springfield, MO<br>
+    Prepared: April 21, 2026
+  </div>
+</header>
+
+<!-- ── DEMO LINK ──────────────────────────────────────────────── -->
+<div class="section-label">Live Demo</div>
+<div class="demo-banner">
+  <div class="demo-banner-left">
+    <strong>Working demo site — built for this pitch</strong>
+    Full site already live at the link below. Show her on your phone.
+  </div>
+  <a href="https://stowaway6959.github.io/asa-al-furat-site/" target="_blank" class="demo-url">
+    stowaway6959.github.io/asa-al-furat-site
+  </a>
+</div>
+
+<!-- ── FEATURE CHECKLIST ──────────────────────────────────────── -->
+<div class="section-label" style="margin-top:24px;">What's Built vs. What's Still Missing</div>
+
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:#22a350"></div> Built in demo</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#e09000"></div> Partial / placeholder</div>
+  <div class="legend-item"><div class="legend-dot" style="background:#cc2222"></div> Not yet built</div>
+</div>
+
+<div class="check-grid">
+  <div class="check-col">
+    <div class="check-item done">
+      <div class="check-icon">✅</div>
+      <div>
+        <div class="check-label">Hero — photo, quote, CTA</div>
+        <div class="check-note">Real 417 Magazine photos rotating. Her quote. "Order Online" + "Our Story" buttons.</div>
+      </div>
+    </div>
+    <div class="check-item done">
+      <div class="check-icon">✅</div>
+      <div>
+        <div class="check-label">Story / About page</div>
+        <div class="check-note">Full arc: Mosul → Turkey → Springfield → C-Street → Holland Building. In her words.</div>
+      </div>
+    </div>
+    <div class="check-item done">
+      <div class="check-icon">✅</div>
+      <div>
+        <div class="check-label">Full menu — Arabic + English</div>
+        <div class="check-note">12 items. Arabic names, descriptions, some prices. Bilingual throughout.</div>
+      </div>
+    </div>
+    <div class="check-item done">
+      <div class="check-icon">✅</div>
+      <div>
+        <div class="check-label">Press / "As Seen In" bar</div>
+        <div class="check-note">417 Magazine, Daily Citizen, SBJ, Around the Ozarks — all clickable links.</div>
+      </div>
+    </div>
+    <div class="check-item done">
+      <div class="check-icon">✅</div>
+      <div>
+        <div class="check-label">Google Maps + Directions</div>
+        <div class="check-note">Live embed. "Get Directions" button links to Google Maps turn-by-turn.</div>
+      </div>
+    </div>
+    <div class="check-item done">
+      <div class="check-icon">✅</div>
+      <div>
+        <div class="check-label">Hours — front and center</div>
+        <div class="check-note">In hero, location section, and footer. Closed Mondays clearly shown.</div>
+      </div>
+    </div>
+    <div class="check-item done">
+      <div class="check-icon">✅</div>
+      <div>
+        <div class="check-label">Catering inquiry form</div>
+        <div class="check-note">Name, email, phone, event type, date, notes. Replies within 1 business day.</div>
+      </div>
+    </div>
+    <div class="check-item done">
+      <div class="check-icon">✅</div>
+      <div>
+        <div class="check-label">Delivery — DoorDash, Uber Eats, Grubhub</div>
+        <div class="check-note">Brand logos, linked cards. DoorDash has her real listing URL.</div>
+      </div>
+    </div>
+    <div class="check-item done">
+      <div class="check-icon">✅</div>
+      <div>
+        <div class="check-label">Google Reviews + Yelp links</div>
+        <div class="check-note">Clickable pills in press bar. Review section with 5-star testimonials.</div>
+      </div>
+    </div>
+    <div class="check-item done">
+      <div class="check-icon">✅</div>
+      <div>
+        <div class="check-label">Dark / light mode toggle</div>
+        <div class="check-note">Moon/sun icon in nav. Saves preference. Respects system dark mode.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="check-col">
+    <div class="check-item missing">
+      <div class="check-icon">❌</div>
+      <div>
+        <div class="check-label">Phone number</div>
+        <div class="check-note">Not on the site anywhere. Every visitor needs this — it's the #1 thing people look for.</div>
+      </div>
+    </div>
+    <div class="check-item missing">
+      <div class="check-icon">❌</div>
+      <div>
+        <div class="check-label">Email / SMS signup</div>
+        <div class="check-note">No newsletter capture. Building an owned list = the only audience she truly controls.</div>
+      </div>
+    </div>
+    <div class="check-item partial">
+      <div class="check-icon">⚠️</div>
+      <div>
+        <div class="check-label">Direct Square ordering</div>
+        <div class="check-note">Button exists — links to placeholder "#". Needs her real Square Online store URL.</div>
+      </div>
+    </div>
+    <div class="check-item partial">
+      <div class="check-icon">⚠️</div>
+      <div>
+        <div class="check-label">Live Instagram feed</div>
+        <div class="check-note">Demo rotates real press photos. True live feed needs Instagram Basic Display API or Behold.so embed ($19/mo).</div>
+      </div>
+    </div>
+    <div class="check-item partial">
+      <div class="check-icon">⚠️</div>
+      <div>
+        <div class="check-label">Menu prices — all items</div>
+        <div class="check-note">Some say "Ask for today's price." Real site needs confirmed pricing for every item.</div>
+      </div>
+    </div>
+    <div class="check-item missing">
+      <div class="check-icon">❌</div>
+      <div>
+        <div class="check-label">Pronunciation guide</div>
+        <div class="check-note">Arabic names are there. A phonetic line (e.g. "Kleicha — KLEE-cha") makes it shareable and memorable.</div>
+      </div>
+    </div>
+    <div class="check-item missing">
+      <div class="check-icon">❌</div>
+      <div>
+        <div class="check-label">Custom domain — asaalfurat.com</div>
+        <div class="check-note">Real-world task. ~$15/yr on Namecheap. Takes 1 day to point DNS. Not in demo.</div>
+      </div>
+    </div>
+    <div class="check-item missing">
+      <div class="check-icon">❌</div>
+      <div>
+        <div class="check-label">Uber Eats + Grubhub listings</div>
+        <div class="check-note">Buttons exist but she may not be live on both yet. Activation = extra revenue with no added work.</div>
+      </div>
+    </div>
+    <div class="check-item missing">
+      <div class="check-icon">❌</div>
+      <div>
+        <div class="check-label">Google Business Profile optimization</div>
+        <div class="check-note">Not a website feature but tied to it. Correct hours, photos, category = free SEO traffic she's leaving behind.</div>
+      </div>
+    </div>
+    <div class="check-item partial">
+      <div class="check-icon">⚠️</div>
+      <div>
+        <div class="check-label">Real food photos on site</div>
+        <div class="check-note">Hero + Instagram section use 417 Mag press photos. Menu uses emoji placeholders. Needs her actual food shots.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── ROI NUMBERS ────────────────────────────────────────────── -->
+<div class="section-label">Why This Pays for Itself</div>
+<div class="roi-grid">
+  <div class="roi-card">
+    <div class="roi-num">0%</div>
+    <div class="roi-label">Commission on Square direct orders<br><span style="color:#aaa;">vs. 15–30% on DoorDash</span></div>
+  </div>
+  <div class="roi-card">
+    <div class="roi-num">$0</div>
+    <div class="roi-label">Cost to add Uber Eats + Grubhub<br><span style="color:#aaa;">new revenue, zero added work</span></div>
+  </div>
+  <div class="roi-card">
+    <div class="roi-num">1 tray</div>
+    <div class="roi-label">Catering form on the site could book<br><span style="color:#aaa;">one corporate tray/week = ~$200–$400</span></div>
+  </div>
+</div>
+
+<!-- ── PRICE PROPOSAL ─────────────────────────────────────────── -->
+<div class="section-label">Price Proposal — Springfield MO Market</div>
+<table>
+  <thead>
+    <tr>
+      <th style="width:18%">Item</th>
+      <th style="width:42%">What's Included</th>
+      <th style="width:20%">Range</th>
+      <th style="width:20%">Timeline</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <div class="row-item">Custom Domain</div>
+      </td>
+      <td>
+        <div class="row-desc">asaalfurat.com — she owns it permanently. Namecheap or Google Domains. We set it up, point DNS, done.</div>
+      </td>
+      <td><span class="price">$15–$20 / yr</span></td>
+      <td><span class="timeline">1 day</span></td>
+    </tr>
+    <tr>
+      <td>
+        <div class="row-item">Full Website Build</div>
+      </td>
+      <td>
+        <div class="row-desc">Custom domain + story/about + full menu with real photos + press section + Instagram embed + catering form + email signup + hours/phone/map + Google SEO setup + mobile-perfect. Everything in the checklist above, completed.</div>
+      </td>
+      <td><span class="price">$1,400–$2,200</span></td>
+      <td><span class="timeline">1–2 weeks</span></td>
+    </tr>
+    <tr>
+      <td>
+        <div class="row-item">Delivery Expansion</div>
+      </td>
+      <td>
+        <div class="row-desc">Uber Eats setup + Grubhub setup — menu photos, listing optimization, activation. New revenue channel with zero added work on her end.</div>
+      </td>
+      <td><span class="price">$400–$700</span></td>
+      <td><span class="timeline">1 week</span></td>
+    </tr>
+    <tr>
+      <td>
+        <div class="row-item">Direct Online Ordering</div>
+      </td>
+      <td>
+        <div class="row-desc">Square Online ordering embedded on her own site — 0% commission. Connects directly to her existing Square POS. No new hardware needed.</div>
+      </td>
+      <td><span class="price">$0–$150 setup</span></td>
+      <td><span class="timeline">2–3 days</span></td>
+    </tr>
+    <tr>
+      <td>
+        <div class="row-item">Google Business Optimization</div>
+      </td>
+      <td>
+        <div class="row-desc">Correct hours, categories, photos, Q&A, review responses set up. Free ongoing SEO — the highest-ROI thing a local business can do.</div>
+      </td>
+      <td><span class="price">Included</span></td>
+      <td><span class="timeline">1 day</span></td>
+    </tr>
+    <tr class="total-row">
+      <td colspan="2" style="font-weight:700;color:#8B1A1A;">Full Package (Website + Delivery + Ordering + Google)</td>
+      <td><span class="price" style="font-size:14px;">$1,800–$3,000</span></td>
+      <td><span class="timeline">2–3 weeks</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- ── ORDERING SETUP GUIDE ───────────────────────────────────── -->
+<div class="section-label">How to Get Her Live on Each Ordering Platform</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:4px;">
+
+  <!-- Uber Eats -->
+  <div style="background:#fff;border:1px solid #e8e8e8;border-radius:10px;overflow:hidden;">
+    <div style="background:#142328;padding:12px 16px;display:flex;align-items:center;gap:10px;">
+      <div style="background:#06C167;width:10px;height:10px;border-radius:50%;flex-shrink:0;"></div>
+      <span style="color:#fff;font-weight:700;font-size:13px;">Uber Eats</span>
+      <span style="margin-left:auto;font-size:10px;color:rgba(255,255,255,0.45);">restaurants.ubereats.com</span>
+    </div>
+    <div style="padding:14px 16px;">
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <div style="background:#e8f5ee;color:#22a350;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;flex-shrink:0;margin-top:1px;">1</div>
+          <div style="font-size:11px;color:#444;line-height:1.45;"><strong>Go to restaurants.ubereats.com</strong> → click "Get Started." Enter restaurant name, address, phone, email.</div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <div style="background:#e8f5ee;color:#22a350;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;flex-shrink:0;margin-top:1px;">2</div>
+          <div style="font-size:11px;color:#444;line-height:1.45;"><strong>Upload menu</strong> — items, descriptions, photos, prices. Use the same items from the website. Photos make a big difference.</div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <div style="background:#e8f5ee;color:#22a350;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;flex-shrink:0;margin-top:1px;">3</div>
+          <div style="font-size:11px;color:#444;line-height:1.45;"><strong>Bank info + tax ID</strong> — EIN or SSN for payouts. Direct deposit to her bank. Required before going live.</div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <div style="background:#e8f5ee;color:#22a350;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;flex-shrink:0;margin-top:1px;">4</div>
+          <div style="font-size:11px;color:#444;line-height:1.45;"><strong>Tablet or phone app</strong> — Uber Eats sends a free tablet for orders. Or use the app on her existing phone.</div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <div style="background:#e8f5ee;color:#22a350;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;flex-shrink:0;margin-top:1px;">5</div>
+          <div style="font-size:11px;color:#444;line-height:1.45;"><strong>Goes live in 3–5 business days</strong> after submission + approval. Commission: 15–30% per order.</div>
+        </div>
+      </div>
+      <div style="margin-top:12px;padding:8px 10px;background:#f0faf5;border-radius:6px;font-size:10px;color:#555;border-left:3px solid #22a350;">
+        <strong>Square integration:</strong> If she's on Square POS, Uber Eats can sync directly — menu updates automatically, no double entry.
+      </div>
+    </div>
+  </div>
+
+  <!-- Grubhub -->
+  <div style="background:#fff;border:1px solid #e8e8e8;border-radius:10px;overflow:hidden;">
+    <div style="background:#F63440;padding:12px 16px;display:flex;align-items:center;gap:10px;">
+      <div style="background:#fff;width:10px;height:10px;border-radius:50%;flex-shrink:0;"></div>
+      <span style="color:#fff;font-weight:700;font-size:13px;">Grubhub</span>
+      <span style="margin-left:auto;font-size:10px;color:rgba(255,255,255,0.55);">get.grubhub.com/restaurant</span>
+    </div>
+    <div style="padding:14px 16px;">
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <div style="background:#feeaea;color:#cc2222;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;flex-shrink:0;margin-top:1px;">1</div>
+          <div style="font-size:11px;color:#444;line-height:1.45;"><strong>get.grubhub.com/restaurant</strong> → "Partner with us." Fill out restaurant info — name, address, hours, cuisine type.</div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <div style="background:#feeaea;color:#cc2222;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;flex-shrink:0;margin-top:1px;">2</div>
+          <div style="font-size:11px;color:#444;line-height:1.45;"><strong>A Grubhub rep calls</strong> — usually within 1–2 business days. They walk through the contract. Commission is negotiable for small independents — push for 10–15%.</div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <div style="background:#feeaea;color:#cc2222;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;flex-shrink:0;margin-top:1px;">3</div>
+          <div style="font-size:11px;color:#444;line-height:1.45;"><strong>Menu build</strong> — their team can build it from photos you send them. Faster than doing it yourself.</div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <div style="background:#feeaea;color:#cc2222;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;flex-shrink:0;margin-top:1px;">4</div>
+          <div style="font-size:11px;color:#444;line-height:1.45;"><strong>Bank + EIN</strong> — same as Uber Eats. Weekly ACH payout to her bank account.</div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <div style="background:#feeaea;color:#cc2222;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;flex-shrink:0;margin-top:1px;">5</div>
+          <div style="font-size:11px;color:#444;line-height:1.45;"><strong>Goes live in 5–7 business days.</strong> Free tablet included for order management.</div>
+        </div>
+      </div>
+      <div style="margin-top:12px;padding:8px 10px;background:#fff5f5;border-radius:6px;font-size:10px;color:#555;border-left:3px solid #F63440;">
+        <strong>Tip:</strong> Grubhub has a smaller user base in mid-size cities but zero incremental work once live. Worth adding — any order it sends is pure upside.
+      </div>
+    </div>
+  </div>
+
+  <!-- Square Online (direct ordering) -->
+  <div style="background:#fff;border:1px solid #e8e8e8;border-radius:10px;overflow:hidden;">
+    <div style="background:#1c1c1c;padding:12px 16px;display:flex;align-items:center;gap:10px;">
+      <div style="background:#fff;width:10px;height:10px;border-radius:50%;flex-shrink:0;"></div>
+      <span style="color:#fff;font-weight:700;font-size:13px;">Square Online — Direct Ordering</span>
+      <span style="margin-left:auto;font-size:10px;color:rgba(255,255,255,0.4);">squareup.com/online-store</span>
+    </div>
+    <div style="padding:14px 16px;">
+      <div style="margin-bottom:10px;padding:7px 10px;background:#f5f5f5;border-radius:6px;font-size:10px;color:#555;">
+        <strong>Why this matters:</strong> 0% commission. Every order she takes through her own site keeps 15–30% more than DoorDash. Pays for the website in a few orders.
+      </div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <div style="background:#f0f0f0;color:#1c1c1c;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;flex-shrink:0;margin-top:1px;">1</div>
+          <div style="font-size:11px;color:#444;line-height:1.45;"><strong>Log into Square Dashboard</strong> → Online → Get Started (or "Online Store" in left nav). Free plan is enough to start.</div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <div style="background:#f0f0f0;color:#1c1c1c;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;flex-shrink:0;margin-top:1px;">2</div>
+          <div style="font-size:11px;color:#444;line-height:1.45;"><strong>Items auto-import</strong> from her existing Square POS. She doesn't have to re-enter the menu — it's already there.</div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <div style="background:#f0f0f0;color:#1c1c1c;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;flex-shrink:0;margin-top:1px;">3</div>
+          <div style="font-size:11px;color:#444;line-height:1.45;"><strong>Enable "Pickup" or "Delivery"</strong> — set pickup window times. Delivery radius optional (uses her own driver or no delivery).</div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <div style="background:#f0f0f0;color:#1c1c1c;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;flex-shrink:0;margin-top:1px;">4</div>
+          <div style="font-size:11px;color:#444;line-height:1.45;"><strong>Copy the ordering link</strong> from the Square dashboard — something like <em>squareup.com/store/asa-al-furat.</em> Paste that URL into the website's "Order Direct" button.</div>
+        </div>
+        <div style="display:flex;gap:10px;align-items:flex-start;">
+          <div style="background:#f0f0f0;color:#1c1c1c;font-size:10px;font-weight:700;padding:2px 7px;border-radius:4px;flex-shrink:0;margin-top:1px;">5</div>
+          <div style="font-size:11px;color:#444;line-height:1.45;"><strong>Orders flow into her existing Square POS</strong> — same screen she already uses. No extra hardware or training.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- What to ask her today -->
+  <div style="background:#fff;border:1px solid #e8e8e8;border-radius:10px;overflow:hidden;">
+    <div style="background:#B8832A;padding:12px 16px;display:flex;align-items:center;gap:10px;">
+      <span style="color:#fff;font-weight:700;font-size:13px;">What to Ask Her — Right Now</span>
+    </div>
+    <div style="padding:14px 16px;display:flex;flex-direction:column;gap:9px;">
+      <div style="font-size:11px;color:#444;line-height:1.45;padding:9px 12px;background:#fdf9f0;border-radius:6px;border-left:3px solid #B8832A;">
+        <strong>"Are you on Uber Eats or Grubhub yet?"</strong><br>
+        If no → explain that DoorDash alone is leaving money behind. Takes 1 week to set up both. We do it for her.
+      </div>
+      <div style="font-size:11px;color:#444;line-height:1.45;padding:9px 12px;background:#fdf9f0;border-radius:6px;border-left:3px solid #B8832A;">
+        <strong>"Do you have Square Online set up, or just the in-person POS?"</strong><br>
+        If just POS → her menu is already in Square, the online store takes 30 minutes to activate. 0% commission on every order through the website.
+      </div>
+      <div style="font-size:11px;color:#444;line-height:1.45;padding:9px 12px;background:#fdf9f0;border-radius:6px;border-left:3px solid #B8832A;">
+        <strong>"What's your phone number for the site?"</strong><br>
+        Biggest missing piece on the demo. Get this before you leave — you can add it to the live site in 2 minutes.
+      </div>
+      <div style="margin-top:4px;font-size:10px;color:#999;font-style:italic;">
+        You only need 3 things from her today: phone number, Square store link (or confirmation she needs it set up), and a yes/no on Uber Eats + Grubhub.
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ── NEXT STEPS ─────────────────────────────────────────────── -->
+<div class="section-label">Three Steps to Close</div>
+<div class="steps">
+  <div class="step">
+    <div class="step-num">1</div>
+    <div>
+      <div class="step-title">Show her the demo live — right now, on your phone</div>
+      <div class="step-detail">Open <strong>stowaway6959.github.io/asa-al-furat-site</strong>. Let her scroll. Her face, her story, her food. Ask: "Is this what you pictured when you imagined having a real website?"</div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">2</div>
+    <div>
+      <div class="step-title">Get two things from her today — phone number + Square link</div>
+      <div class="step-detail">These are the two biggest missing pieces. If she gives them to you, you can update the live demo before you leave the parking lot. Shows her it moves fast.</div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">3</div>
+    <div>
+      <div class="step-title">Find her Square ordering link — do it together, takes 3 minutes</div>
+      <div class="step-detail">
+        Ask to pull up her Square dashboard on her phone or laptop. Then:
+        <div style="margin-top:10px;display:flex;flex-direction:column;gap:6px;">
+          <div style="display:flex;gap:9px;align-items:flex-start;background:#f7f7f7;border-radius:6px;padding:8px 10px;">
+            <span style="font-size:10px;font-weight:700;color:#888;flex-shrink:0;margin-top:1px;">A</span>
+            <span style="font-size:11px;color:#444;line-height:1.45;"><strong>Already has Square Online:</strong> Go to <em>Dashboard → Online → Share</em>. Copy the URL — it looks like <em>square.site/store/asa-al-furat</em> or a custom link. That's the link. Paste it into the "Order Direct" button on the site.</span>
+          </div>
+          <div style="display:flex;gap:9px;align-items:flex-start;background:#f7f7f7;border-radius:6px;padding:8px 10px;">
+            <span style="font-size:10px;font-weight:700;color:#888;flex-shrink:0;margin-top:1px;">B</span>
+            <span style="font-size:11px;color:#444;line-height:1.45;"><strong>Doesn't have Square Online yet:</strong> Go to <em>Dashboard → Online → Get Started</em>. Choose "Pickup." Her menu items auto-load from the POS — she doesn't type anything. Hit Publish. Takes about 10–15 minutes. Then grab that link.</span>
+          </div>
+          <div style="display:flex;gap:9px;align-items:flex-start;background:#f7f7f7;border-radius:6px;padding:8px 10px;">
+            <span style="font-size:10px;font-weight:700;color:#888;flex-shrink:0;margin-top:1px;">C</span>
+            <span style="font-size:11px;color:#444;line-height:1.45;"><strong>No Square at all (cash/other POS):</strong> Square is free to sign up. squareup.com → free account → free card reader ships to her. In-person POS + online ordering, no monthly fee. Worth setting up even if she doesn't do the full site yet.</span>
+          </div>
+        </div>
+        <div style="margin-top:10px;font-size:11px;color:#777;font-style:italic;">Once you have the link, text it to yourself — you can drop it into the live demo site in under 2 minutes from your phone.</div>
+      </div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="step-num">4</div>
+    <div>
+      <div class="step-title">Anchor on the catering form — that's her silent money</div>
+      <div class="step-detail">One corporate tray order per week at $200–$400 = $800–$1,600/month in passive revenue she currently has no way to capture. The site pays for itself in 2–3 bookings.</div>
+    </div>
+  </div>
+</div>
+
+<div class="doc-footer">
+  <span>Asa Al-Furat — Demo Supplement · April 21, 2026</span>
+  <span>Supplement to: asa-al-furat-biz-audit.html</span>
+</div>
+
+</body>
+</html>

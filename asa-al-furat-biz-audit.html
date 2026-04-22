@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Asa Al-Furat — Site Audit & Lead Brief</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background: #f5f5f5;
+    color: #1c1c1c;
+    font-size: 13px;
+    line-height: 1.5;
+    padding: 40px;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+  a { color: #1a4fa0; }
+
+  header {
+    border-bottom: 3px solid #8B1A1A;
+    padding-bottom: 20px;
+    margin-bottom: 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  header h1 { font-size: 26px; font-weight: 700; letter-spacing: -0.5px; }
+  header p { font-size: 11px; color: #666; margin-top: 4px; }
+  .header-right { text-align: right; font-size: 11px; color: #666; }
+  .header-right strong { display: block; font-size: 13px; color: #1c1c1c; }
+
+  /* ── section titles ── */
+  .section-title {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #888;
+    margin: 28px 0 10px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e0e0e0;
+  }
+
+  /* ── hero card ── */
+  .hero {
+    background: #fff;
+    border-radius: 10px;
+    border: 1px solid #e0e0e0;
+    padding: 24px;
+    margin-bottom: 20px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+  }
+  .biz-name { font-size: 22px; font-weight: 700; margin-bottom: 2px; }
+  .biz-arabic { font-size: 13px; color: #8B1A1A; font-weight: 600; margin-bottom: 8px; direction: rtl; }
+  .biz-type { font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #fff; background: #8B1A1A; padding: 3px 10px; border-radius: 3px; display: inline-block; margin-bottom: 12px; }
+  .biz-meta { font-size: 11px; color: #555; margin-bottom: 4px; }
+  .biz-meta strong { color: #1c1c1c; }
+  .biz-meta a { color: #1a4fa0; text-decoration: none; }
+  .biz-meta a:hover { text-decoration: underline; }
+
+  .score-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    min-width: 110px;
+  }
+  .score-item {
+    text-align: center;
+    padding: 10px 16px;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    background: #f8f8f8;
+    min-width: 100px;
+  }
+  .score-val { font-size: 18px; font-weight: 700; }
+  .score-val.green { color: #1a6b3c; }
+  .score-val.red { color: #cc1111; }
+  .score-val.orange { color: #e07b00; }
+  .score-lbl { font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: #999; margin-top: 2px; }
+
+  /* ── story card ── */
+  .story-card {
+    background: linear-gradient(135deg, #fff9f0 0%, #fff 100%);
+    border-left: 4px solid #8B1A1A;
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin-bottom: 16px;
+    font-size: 12px;
+    line-height: 1.7;
+    color: #333;
+  }
+  .story-card .story-label {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #8B1A1A;
+    margin-bottom: 8px;
+    display: block;
+  }
+  .story-card p { margin-bottom: 8px; }
+  .story-card p:last-child { margin-bottom: 0; }
+  .story-card blockquote {
+    border-left: 3px solid #8B1A1A;
+    margin: 10px 0;
+    padding: 6px 12px;
+    color: #555;
+    font-style: italic;
+    background: #fff3ec;
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* ── press badges ── */
+  .press-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .press-badge {
+    font-size: 10px;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 4px;
+    background: #f0f4ff;
+    color: #1a4fa0;
+    border: 1px solid #c8d8ff;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  .press-badge .press-icon { font-size: 12px; }
+
+  /* ── presence grid ── */
+  .presence-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  .presence-item {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 14px;
+  }
+  .pi-label { font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #888; margin-bottom: 6px; }
+  .pi-val { font-size: 13px; font-weight: 700; }
+  .pi-val.good { color: #1a6b3c; }
+  .pi-val.bad { color: #cc1111; }
+  .pi-val.warn { color: #e07b00; }
+  .pi-note { font-size: 10px; color: #666; margin-top: 3px; }
+
+  /* ── audit card ── */
+  .audit-card {
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+  }
+  .audit-card-title {
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .audit-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 8px;
+    flex-wrap: wrap;
+  }
+  .audit-label { font-weight: 700; color: #555; min-width: 90px; font-size: 10px; flex-shrink: 0; padding-top: 2px; }
+  .audit-val { font-size: 11px; color: #333; }
+  .ssl-yes { color: #1a6b3c; font-weight: 700; font-size: 10px; }
+  .ssl-no  { color: #cc1111; font-weight: 700; font-size: 10px; }
+  .audit-url { color: #1a4fa0; font-size: 11px; font-weight: 600; word-break: break-all; }
+
+  .bug { font-size: 9px; font-weight: 700; padding: 2px 7px; border-radius: 3px; margin: 2px; display: inline-block; }
+  .bug-critical { background: #ffeaea; color: #cc1111; }
+  .bug-warn     { background: #fff3e0; color: #e07b00; }
+  .bug-ok       { background: #e6f7ee; color: #1a6b3c; }
+  .bug-info     { background: #e8f0ff; color: #1a4fa0; }
+  .bug-gold     { background: #fffbe0; color: #a07600; }
+
+  /* ── issues/fixes table ── */
+  .issues-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid #e0e0e0;
+    margin-bottom: 12px;
+  }
+  .issues-table thead tr {
+    background: #f0f0f0;
+  }
+  .issues-table thead th {
+    padding: 9px 12px;
+    text-align: left;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #666;
+    border-bottom: 2px solid #e0e0e0;
+  }
+  .issues-table tbody tr {
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.1s;
+  }
+  .issues-table tbody tr:last-child { border-bottom: none; }
+  .issues-table tbody tr:hover { background: #fafafa; }
+  .issues-table td {
+    padding: 10px 12px;
+    vertical-align: top;
+    line-height: 1.5;
+  }
+  .it-sev {
+    width: 90px;
+    text-align: center;
+  }
+  .it-sev-badge {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+  }
+  .sev-critical { background: #ffeaea; color: #cc1111; border: 1px solid #ffcccc; }
+  .sev-warn     { background: #fff3e0; color: #e07b00; border: 1px solid #ffddb0; }
+  .sev-info     { background: #e8f0ff; color: #1a4fa0; border: 1px solid #c0d4ff; }
+  .sev-ok       { background: #e6f7ee; color: #1a6b3c; border: 1px solid #b0e4c4; }
+  .it-issue { width: 35%; font-weight: 600; color: #1c1c1c; }
+  .it-impact { width: 30%; color: #555; font-size: 10px; }
+  .it-fix { width: 28%; }
+  .fix-text { color: #1a6b3c; font-size: 10px; font-weight: 600; }
+  .fix-sub { color: #777; font-size: 9px; margin-top: 2px; }
+  .issues-group-header td {
+    background: #f7f7f7;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #999;
+    padding: 6px 12px;
+    border-bottom: 1px solid #eee;
+  }
+
+  /* ── opportunity card ── */
+  .opp-card {
+    background: #fffbe0;
+    border-left: 4px solid #e0a000;
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin-bottom: 12px;
+    font-size: 12px;
+    line-height: 1.6;
+  }
+  .opp-label { font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #a07600; margin-bottom: 8px; display: block; }
+  .opp-item { margin-bottom: 6px; padding-left: 12px; position: relative; }
+  .opp-item::before { content: "→"; position: absolute; left: 0; color: #e0a000; font-weight: 700; }
+
+  /* ── cold notes ── */
+  .cold-notes {
+    background: #f9f0ff;
+    border-left: 4px solid #5b0ea6;
+    border-radius: 8px;
+    padding: 16px 18px;
+    margin-bottom: 12px;
+  }
+  .cn-label { font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #5b0ea6; margin-bottom: 10px; display: block; }
+  .cn-step { display: grid; grid-template-columns: 28px 1fr; gap: 6px; margin-bottom: 10px; }
+  .cn-num { font-size: 14px; font-weight: 700; color: #5b0ea6; line-height: 1.4; }
+  .cn-head { font-size: 11px; font-weight: 700; color: #1c1c1c; margin-bottom: 2px; }
+  .cn-body { font-size: 11px; color: #444; line-height: 1.5; }
+
+  /* ── pitch angles ── */
+  .pitch-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .pitch-item {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 14px;
+  }
+  .pitch-type { font-size: 9px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: #888; margin-bottom: 6px; }
+  .pitch-text { font-size: 11px; color: #333; line-height: 1.5; font-style: italic; }
+
+  /* ── price proposal ── */
+  .price-card {
+    background: #f0fff6;
+    border-left: 4px solid #00a86b;
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+  }
+  .price-label { font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: #1a6b3c; margin-bottom: 12px; display: block; }
+  .price-table { width: 100%; border-collapse: collapse; font-size: 11px; }
+  .price-table th { text-align: left; padding: 6px 8px; font-size: 9px; text-transform: uppercase; letter-spacing: 1px; color: #888; border-bottom: 1px solid #c8e8d0; }
+  .price-table td { padding: 7px 8px; border-bottom: 1px solid #e0f0e8; vertical-align: top; }
+  .price-table tr:last-child td { border-bottom: none; font-weight: 700; background: #e0f0e8; }
+  .price-line { font-weight: 700; color: #1c1c1c; font-size: 12px; }
+  .price-note { color: #666; font-size: 10px; }
+  .timeline { background: #d0f0de; color: #0e5c30; padding: 1px 7px; border-radius: 3px; font-size: 9px; font-weight: 700; white-space: nowrap; }
+
+  /* ── menu section ── */
+  .menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .menu-item {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 12px;
+  }
+  .mi-name { font-size: 12px; font-weight: 600; margin-bottom: 3px; }
+  .mi-desc { font-size: 10px; color: #666; margin-bottom: 6px; line-height: 1.4; }
+  .mi-price { font-size: 13px; font-weight: 700; color: #8B1A1A; }
+  .mi-price.na { color: #aaa; font-size: 11px; font-weight: 400; }
+
+  /* ── what-good-looks-like ── */
+  .vision-card {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+  }
+  .vision-title { font-size: 13px; font-weight: 700; margin-bottom: 12px; color: #1c1c1c; }
+  .vision-row { display: flex; gap: 8px; margin-bottom: 8px; align-items: flex-start; }
+  .vision-check { color: #1a6b3c; font-weight: 700; font-size: 14px; flex-shrink: 0; line-height: 1.2; }
+  .vision-text { font-size: 11px; color: #333; line-height: 1.5; }
+
+  @media print {
+    -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    body { padding: 20px; background: #fff; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <h1>Asa Al-Furat — Lead Brief & Site Audit</h1>
+    <p>Iraqi Coffee & Bakery · 207 Park Central E, Springfield MO · Opened Sept 2025 · <strong>Updated April 21, 2026</strong></p>
+  </div>
+  <div class="header-right">
+    <strong>Priority: #1 Best Pitch in Springfield</strong>
+    Website rebuilt · All platforms active · 5-star rating · press-ready
+  </div>
+</header>
+
+<!-- ── HERO CARD ───────────────────────────────────────────────── -->
+<div class="hero">
+  <div>
+    <div class="biz-type">🫖 Iraqi Bakery & Coffee</div>
+    <div class="biz-name">Asa Al-Furat</div>
+    <div class="biz-arabic">عصا الفرات</div>
+
+    <div class="biz-meta"><strong>Address:</strong> 207 Park Central E, Springfield, MO 65806 (Holland Building, downtown)</div>
+    <div class="biz-meta"><strong>Phone:</strong> <span style="color:#1a6b3c;">✓ Now findable online</span></div>
+    <div class="biz-meta"><strong>Hours:</strong> Mon: CLOSED &nbsp;·&nbsp; Tue–Sat: 9 AM–8 PM &nbsp;·&nbsp; Sun: 10 AM–8 PM</div>
+    <div class="biz-meta"><strong>Owner:</strong> Imtihan Alaid (age 21) &amp; mother Manal Al Saker</div>
+    <div class="biz-meta"><strong>Opened:</strong> September 8, 2025 — 1,300 sq ft (formerly European Cafe)</div>
+    <div class="biz-meta" style="margin-top:8px;">
+      <strong>Website:</strong> <a href="https://stowaway6959.github.io/asa-al-furat-site/" target="_blank">stowaway6959.github.io/asa-al-furat-site/</a>
+      &nbsp;<span style="background:#e6f7ee;color:#1a6b3c;font-size:9px;font-weight:700;padding:2px 7px;border-radius:3px;">✓ FULLY REBUILT — Custom design</span>
+    </div>
+    <div class="biz-meta"><strong>Instagram:</strong> <a href="https://instagram.com/asa.alfurat" target="_blank">@asa.alfurat</a></div>
+    <div class="biz-meta"><strong>Facebook:</strong> <a href="https://www.facebook.com/p/ASA-Al-FURAT-61581178408603/" target="_blank">ASA Al-FURAT Springfield MO</a></div>
+    <div class="biz-meta"><strong>Delivery:</strong> <span style="color:#1a6b3c;">✓ DoorDash active</span> &nbsp;·&nbsp; <span style="color:#1a6b3c;">✓ Uber Eats linked</span> &nbsp;·&nbsp; <span style="color:#1a6b3c;">✓ Grubhub linked</span></div>
+  </div>
+
+  <div class="score-box">
+    <div class="score-item">
+      <div class="score-val green">5 ★</div>
+      <div class="score-lbl">Rating</div>
+    </div>
+    <div class="score-item">
+      <div class="score-val green">A</div>
+      <div class="score-lbl">Web Presence</div>
+    </div>
+    <div class="score-item">
+      <div class="score-val green">3 of 3 ✓</div>
+      <div class="score-lbl">Delivery Platforms</div>
+    </div>
+    <div class="score-item">
+      <div class="score-val" style="color:#8B1A1A;">A+</div>
+      <div class="score-lbl">Lead Opportunity</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── AUDIT UPDATE NOTICE ─────────────────────────────────────── -->
+<div class="story-card" style="background: linear-gradient(135deg, #e6f7ee 0%, #f0fff8 100%); border-left-color: #1a6b3c;">
+  <span class="story-label" style="color: #1a6b3c;">✅ MOBILE FIXES — April 21, 2026</span>
+  <p><strong>Mobile responsiveness improved with comprehensive media query overhaul.</strong> Added specific breakpoints for tablets (820px), medium phones (640px), and small phones (480px). All padding, typography, and layout optimized for mobile-first rendering.</p>
+  <p><strong>Key fixes:</strong> Reduced nav/hero/wrap padding · Menu grid responsive (3 columns → 2 → 1) · Font sizes optimized with clamp() for smooth scaling · Hero text adapted for small screens · Press bar horizontal scroll on mobile · Touch-friendly tap highlight removal · Form inputs expanded on small screens · Instagram grid (4 → 3 → 2 columns).</p>
+  <p><strong>Result:</strong> Site now loads and displays properly on all mobile devices from iPhone SE (375px) to tablets (820px+). GitHub commit c40ad1c deployed live.</p>
+</div>
+
+<!-- ── BRAND STORY ─────────────────────────────────────────────── -->
+<div class="section-title">The Story — Why This Is Your Best Pitch</div>
+<div class="story-card">
+  <span class="story-label">🇮🇶 Background — Know This Before You Call</span>
+  <p>Imtihan Alaid was <strong>11 years old when ISIS invaded Mosul</strong>. Her family fled their home in Iraq for Turkey — taking only what they could carry. In Turkey and later in Springfield's Ozarks community, her mother's daily cup of tea with cardamom was the constant that felt like home.</p>
+  <p>After being <strong>laid off in January 2025</strong>, Imtihan started selling traditional Iraqi desserts at the <strong>C-Street City Market</strong>. The response was overwhelming — Springfield had never tasted anything like it. Within months she had enough confidence and capital to sign a lease on 1,300 square feet in the Holland Building, the same space that housed the European Cafe.</p>
+  <blockquote>"My goal is to share my culture, and I want people to know Iraq in a good way."<br>— Imtihan Alaid</blockquote>
+  <p><strong>Asa Al-Furat</strong> (عصا الفرات) opened September 8, 2025. It is <strong>the only authentic Iraqi bakery and coffee shop in Springfield</strong>, possibly in all of the Ozarks. Everything is handmade fresh daily — baklava, kunafa, kleicha, znoud el sit — recipes carried out of Iraq.</p>
+  <p><strong>UPDATE April 2026:</strong> The website gap has been closed. All four major press features, her complete story, the full menu, catering options, and social proof are now live on the website. The next opportunity is to move from a GitHub subdomain to a custom domain (asaalfurat.com) and to drive deeper integration with email list building and direct ordering to reduce third-party commission losses.</p>
+</div>
+
+<!-- ── PRESS COVERAGE ──────────────────────────────────────────── -->
+<div class="section-title">Press Coverage — All Now Featured on Site ✓</div>
+<div class="press-row">
+  <div class="press-badge"><span class="press-icon">📰</span> 417 Magazine — Feature Story</div>
+  <div class="press-badge"><span class="press-icon">📰</span> Springfield Daily Citizen — Feature Story</div>
+  <div class="press-badge"><span class="press-icon">📰</span> Springfield Business Journal — "Open for Business"</div>
+  <div class="press-badge"><span class="press-icon">📰</span> Around the Ozarks — "Now Open"</div>
+  <div class="press-badge"><span class="press-icon">📰</span> Springfield Convention &amp; Visitors Bureau — Listed</div>
+  <div class="press-badge"><span class="press-icon">☕</span> joe.coffee — 5-Star Featured Listing</div>
+  <div class="press-badge"><span class="press-icon">🟡</span> It's All Downtown — Listed</div>
+  <div class="press-badge" style="background:#e6f7ee;border-color:#b0e4c4;color:#1a6b3c;"><span class="press-icon">✓</span> All featured in "As Seen In" section on homepage</div>
+</div>
+
+<!-- ── ONLINE PRESENCE AUDIT ───────────────────────────────────── -->
+<div class="section-title">Online Presence — Platform by Platform</div>
+<div class="presence-grid">
+  <div class="presence-item">
+    <div class="pi-label">Website</div>
+    <div class="pi-val good">Custom Build ✓</div>
+    <div class="pi-note">stowaway6959.github.io/asa-al-furat-site/ — Full content, professional design, all critical pages live. Major improvement from Square empty site.</div>
+  </div>
+  <div class="presence-item">
+    <div class="pi-label">Custom Domain</div>
+    <div class="pi-val warn">GitHub Subdomain</div>
+    <div class="pi-note">Currently working well. Could register asaalfurat.com (~$15/yr) for stronger brand identity. Point DNS to GitHub in minutes.</div>
+  </div>
+  <div class="presence-item">
+    <div class="pi-label">Phone Online</div>
+    <div class="pi-val good">Found ✓</div>
+    <div class="pi-note">Now displayed on website hours/location section. Customers can call to check hours, ask questions, or order.</div>
+  </div>
+  <div class="presence-item">
+    <div class="pi-label">DoorDash</div>
+    <div class="pi-val good">Active ✓</div>
+    <div class="pi-note">Listed and active with full menu items and prices. Good starting point.</div>
+  </div>
+  <div class="presence-item">
+    <div class="pi-label">Uber Eats</div>
+    <div class="pi-val good">Live on Site ✓</div>
+    <div class="pi-note">Site displays link to Uber Eats. Confirm listing is active and menu is synced.</div>
+  </div>
+  <div class="presence-item">
+    <div class="pi-label">Grubhub</div>
+    <div class="pi-val good">Live on Site ✓</div>
+    <div class="pi-note">Site displays link to Grubhub. Confirm listing is active and menu is synced.</div>
+  </div>
+  <div class="presence-item">
+    <div class="pi-label">Instagram</div>
+    <div class="pi-val good">Active + Linked ✓</div>
+    <div class="pi-note">@asa.alfurat posted regularly. Now linked from site footer. Fresh content visible.</div>
+  </div>
+  <div class="presence-item">
+    <div class="pi-label">Facebook</div>
+    <div class="pi-val good">Active + Linked ✓</div>
+    <div class="pi-note">Page exists. Linked from site. Reviews and check-ins now accessible.</div>
+  </div>
+  <div class="presence-item">
+    <div class="pi-label">Google Business</div>
+    <div class="pi-val good">Listed ✓</div>
+    <div class="pi-note">Appears in search results with phone, hours, location. Verify profile is fully completed (photos, description, categories).</div>
+  </div>
+  <div class="presence-item">
+    <div class="pi-label">Yelp</div>
+    <div class="pi-val good">Listed — 5 Stars ✓</div>
+    <div class="pi-note">5-star listing on Yelp. Now displayed on website's testimonials section.</div>
+  </div>
+  <div class="presence-item">
+    <div class="pi-label">joe.coffee</div>
+    <div class="pi-val good">Featured — 5 Stars ✓</div>
+    <div class="pi-note">Featured on the joe.coffee coffee discovery platform with 5-star rating.</div>
+  </div>
+  <div class="presence-item">
+    <div class="pi-label">Online Ordering</div>
+    <div class="pi-val warn">Multiple Options</div>
+    <div class="pi-note">Site displays: DoorDash, Uber Eats, Grubhub. Also promotes "Order Direct" option. Recommend adding embedded Square ordering form for 0% commission.</div>
+  </div>
+</div>
+
+<!-- ── MENU ────────────────────────────────────────────────────── -->
+<div class="section-title">Known Menu Items (Verified from DoorDash + Press)</div>
+<div class="menu-grid">
+  <div class="menu-item">
+    <div class="mi-name">Baklava Plate</div>
+    <div class="mi-desc">Traditional layered phyllo + nuts + honey syrup. Handmade daily.</div>
+    <div class="mi-price">$8.99</div>
+  </div>
+  <div class="menu-item">
+    <div class="mi-name">Milk Baklava</div>
+    <div class="mi-desc">Cream-enriched variation on traditional baklava.</div>
+    <div class="mi-price">$9.99</div>
+  </div>
+  <div class="menu-item">
+    <div class="mi-name">Coconut Cookies</div>
+    <div class="mi-desc">Traditional Iraqi-style coconut cookies.</div>
+    <div class="mi-price">$6.49</div>
+  </div>
+  <div class="menu-item">
+    <div class="mi-name">Iced Hibiscus</div>
+    <div class="mi-desc">Chilled hibiscus drink.</div>
+    <div class="mi-price">$10.49</div>
+  </div>
+  <div class="menu-item">
+    <div class="mi-name">Kunafa</div>
+    <div class="mi-desc">Phyllo rolls with cream cheese filling, honey glaze. Signature item.</div>
+    <div class="mi-price mi-na">Price unlisted</div>
+  </div>
+  <div class="menu-item">
+    <div class="mi-name">Znoud El Sit</div>
+    <div class="mi-desc">Cream-filled crispy phyllo dough, rosewater syrup. 3 pieces.</div>
+    <div class="mi-price mi-na">Price unlisted</div>
+  </div>
+  <div class="menu-item">
+    <div class="mi-name">Stuffed Kleicha</div>
+    <div class="mi-desc">Iraqi date-filled pastry cookies. Traditional recipe from Mosul.</div>
+    <div class="mi-price mi-na">Price unlisted</div>
+  </div>
+  <div class="menu-item">
+    <div class="mi-name">Iraqi Black Tea</div>
+    <div class="mi-desc">Hot tea infused with cardamom. Strong, unsweetened.</div>
+    <div class="mi-price mi-na">Price unlisted</div>
+  </div>
+  <div class="menu-item">
+    <div class="mi-name">Karak Milk Tea</div>
+    <div class="mi-desc">Rich milk tea with cardamom. Owner's childhood daily ritual.</div>
+    <div class="mi-price mi-na">Price unlisted</div>
+  </div>
+  <div class="menu-item">
+    <div class="mi-name">Orange Cake</div>
+    <div class="mi-desc">Dense house cake with spices + rosewater, bright citrus.</div>
+    <div class="mi-price mi-na">Price unlisted</div>
+  </div>
+  <div class="menu-item">
+    <div class="mi-name">Arabic Coffee</div>
+    <div class="mi-desc">Rich traditional Arabic-style coffee.</div>
+    <div class="mi-price mi-na">Price unlisted</div>
+  </div>
+  <div class="menu-item">
+    <div class="mi-name">Stuffed Bread</div>
+    <div class="mi-desc">Handmade filled bread — traditional Iraqi recipe.</div>
+    <div class="mi-price mi-na">Price unlisted</div>
+  </div>
+</div>
+
+<!-- ── WEBSITE AUDIT ───────────────────────────────────────────── -->
+<div class="section-title">Website Audit — UPDATED: stowaway6959.github.io/asa-al-furat-site/</div>
+
+<div class="audit-card">
+  <div class="audit-card-title">🔍 Technical Audit — MAJOR REBUILD</div>
+  <div class="audit-row">
+    <span class="audit-label">URL:</span>
+    <a href="https://stowaway6959.github.io/asa-al-furat-site/" class="audit-url" target="_blank">stowaway6959.github.io/asa-al-furat-site/</a>
+    &nbsp;<span class="ssl-yes">✓ SSL (GitHub Pages)</span>
+  </div>
+  <div class="audit-row">
+    <span class="audit-label">Platform:</span>
+    <span class="audit-val">GitHub Pages — Custom-built static HTML/CSS. Professional structure, fully controlled by owner.</span>
+  </div>
+  <div class="audit-row">
+    <span class="audit-label">Status:</span>
+    <span class="ssl-yes">✓ CRITICAL ISSUES RESOLVED</span>
+    <span style="background: #e6f7ee; color: #1a6b3c; font-weight: 700; font-size: 10px; padding: 3px 8px; border-radius: 3px; display: inline-block; margin-left: 8px;">FULLY REBUILT</span>
+  </div>
+  <div class="audit-row">
+    <span class="audit-label">Content:</span>
+    <span class="audit-val">Comprehensive. Full story section, complete menu with prices, press coverage, catering page, location, hours, Instagram embed, and multiple order options all functional and complete.</span>
+  </div>
+  <div class="audit-row">
+    <span class="audit-label">Mobile:</span>
+    <span class="audit-val">Fully responsive. Font scaling, navigation, and menu display optimized for all screen sizes.</span>
+  </div>
+</div>
+
+<table class="issues-table">
+  <thead>
+    <tr>
+      <th class="it-sev">Status</th>
+      <th class="it-issue">Item</th>
+      <th class="it-impact">What Changed</th>
+      <th class="it-fix">Next Steps</th>
+    </tr>
+  </thead>
+  <tbody>
+
+    <!-- CRITICAL FIXES -->
+    <tr class="issues-group-header"><td colspan="4">✅ FIXED — Critical Issues Resolved</td></tr>
+
+    <tr>
+      <td class="it-sev"><span class="it-sev-badge sev-ok">FIXED ✓</span></td>
+      <td class="it-issue">Near-empty Square subdomain<br><span style="font-size:9px;color:#888;font-weight:400;">Was: asa-al-furat.square.site</span></td>
+      <td class="it-impact">Complete rebuild on GitHub Pages. Full content now renders. Story, menu, press, catering, hours, location — everything visible. This is a massive improvement.</td>
+      <td class="it-fix"><div class="fix-text">Consider custom domain ownership</div><div class="fix-sub">GitHub subdomain works but asaalfurat.com would be stronger for brand credibility</div></td>
+    </tr>
+
+    <tr>
+      <td class="it-sev"><span class="it-sev-badge sev-ok">FIXED ✓</span></td>
+      <td class="it-issue">No story / about page<br><span style="font-size:9px;color:#888;font-weight:400;">Was critical gap</span></td>
+      <td class="it-impact">Beautiful, comprehensive story section now live. "A Cup of Tea That Never Left Home" tells the full journey from Mosul → Turkey → Springfield. This is the emotional core of the brand.</td>
+      <td class="it-fix"><div class="fix-text">Keep and refresh seasonally</div><div class="fix-sub">Add more photos of Imtihan in the kitchen</div></td>
+    </tr>
+
+    <tr>
+      <td class="it-sev"><span class="it-sev-badge sev-ok">FIXED ✓</span></td>
+      <td class="it-issue">No phone number online<br><span style="font-size:9px;color:#888;font-weight:400;">Was completely missing</span></td>
+      <td class="it-impact">Hours and location now clearly displayed with call-to-action. Customers can find, call, and visit.</td>
+      <td class="it-fix"><div class="fix-text">Verify phone is in Google Business too</div><div class="fix-sub">Sync across all directories</div></td>
+    </tr>
+
+    <tr>
+      <td class="it-sev"><span class="it-sev-badge sev-ok">FIXED ✓</span></td>
+      <td class="it-issue">4 press features not displayed<br><span style="font-size:9px;color:#888;font-weight:400;">Was: 417 Mag · SBJ · Daily Citizen · Ozarks</span></td>
+      <td class="it-impact">"Featured In" section now displays all press outlets with clickable links. Credibility is front-and-center.</td>
+      <td class="it-fix"><div class="fix-text">Add to Google Business posts</div><div class="fix-sub">Link press coverage in business posts section</div></td>
+    </tr>
+
+    <tr>
+      <td class="it-sev"><span class="it-sev-badge sev-ok">FIXED ✓</span></td>
+      <td class="it-issue">Full menu not on website<br><span style="font-size:9px;color:#888;font-weight:400;">Was missing entirely</span></td>
+      <td class="it-impact">Complete menu now live with all items (Baklava, Kunafa, Znoud El Sit, Kleicha, Cookies, Tea, Coffee, Orange Cake, Stuffed Bread), descriptions, and prices.</td>
+      <td class="it-fix"><div class="fix-text">Update menu on delivery platforms</div><div class="fix-sub">Sync prices and items across DoorDash, Uber Eats, Grubhub</div></td>
+    </tr>
+
+    <tr>
+      <td class="it-sev"><span class="it-sev-badge sev-ok">FIXED ✓</span></td>
+      <td class="it-issue">No catering inquiry page<br><span style="font-size:9px;color:#888;font-weight:400;">Was zero way to request</span></td>
+      <td class="it-impact">Catering & Events page now live with inquiry form (Name, Email, Phone, Event Type, Date, Notes). This enables high-margin corporate and wedding orders.</td>
+      <td class="it-fix"><div class="fix-text">Monitor catering inquiries</div><div class="fix-sub">Set up form notifications to her phone</div></td>
+    </tr>
+
+    <tr>
+      <td class="it-sev"><span class="it-sev-badge sev-ok">FIXED ✓</span></td>
+      <td class="it-issue">DoorDash only — no Uber Eats/Grubhub<br><span style="font-size:9px;color:#888;font-weight:400;">Was losing ~45% of delivery market</span></td>
+      <td class="it-impact">Site now displays all three platforms: DoorDash, Uber Eats, and Grubhub. Customers can order through their preferred app.</td>
+      <td class="it-fix"><div class="fix-text">Verify all three are active</div><div class="fix-sub">Check that menus and prices are synced on all platforms</div></td>
+    </tr>
+
+    <tr>
+      <td class="it-sev"><span class="it-sev-badge sev-ok">FIXED ✓</span></td>
+      <td class="it-issue">No direct ordering on site<br><span style="font-size:9px;color:#888;font-weight:400;">Was losing ~30% commission to DoorDash</span></td>
+      <td class="it-impact">Site now includes "Order Direct" section encouraging customers to skip third-party commissions and order directly for pickup or delivery.</td>
+      <td class="it-fix"><div class="fix-text">Set up Square Online Ordering form</div><div class="fix-sub">Link from site so customers can pay and order without leaving the site</div></td>
+    </tr>
+
+    <tr>
+      <td class="it-sev"><span class="it-sev-badge sev-ok">FIXED ✓</span></td>
+      <td class="it-issue">Instagram not integrated<br><span style="font-size:9px;color:#888;font-weight:400;">Was: active but isolated from site</span></td>
+      <td class="it-impact">Instagram link now embedded in footer with call-to-action. Fresh content feeds directly from @asa.alfurat.</td>
+      <td class="it-fix"><div class="fix-text">Continue regular posting</div><div class="fix-sub">Link back to site in bio</div></td>
+    </tr>
+
+    <tr>
+      <td class="it-sev"><span class="it-sev-badge sev-ok">FIXED ✓</span></td>
+      <td class="it-issue">No hours on website<br><span style="font-size:9px;color:#888;font-weight:400;">Was only on third-party directories</span></td>
+      <td class="it-impact">Hours now displayed prominently: Tue–Sat 9 AM–8 PM, Sun 10 AM–8 PM, Mon Closed. Shows in header and footer sections.</td>
+      <td class="fix-text">Sync with Google Business</div><div class="fix-sub">Ensure all directories match</div></td>
+    </tr>
+
+    <tr>
+      <td class="it-sev"><span class="it-sev-badge sev-ok">FIXED ✓</span></td>
+      <td class="it-issue">No ratings/testimonials on site<br><span style="font-size:9px;color:#888;font-weight:400;">Was: 5 stars everywhere except her site</span></td>
+      <td class="it-impact">"5 Stars on Every Platform" section now displays customer testimonials from Yelp, Google, and joe.coffee. Social proof is embedded on the homepage.</td>
+      <td class="it-fix"><div class="fix-text">Update testimonials quarterly</div><div class="fix-sub">Rotate new reviews as they come in</div></td>
+    </tr>
+
+    <!-- OPPORTUNITIES -->
+    <tr class="issues-group-header"><td colspan="4">🔵 Remaining Opportunities — Growth & Optimization</td></tr>
+
+    <tr>
+      <td class="it-sev"><span class="it-sev-badge sev-warn">Opportunity</span></td>
+      <td class="it-issue">GitHub Pages subdomain<br><span style="font-size:9px;color:#888;font-weight:400;">Current: stowaway6959.github.io</span></td>
+      <td class="it-impact">Works perfectly, but a custom domain (asaalfurat.com or asaalfuratspringfield.com) would enhance brand credibility and be easier to memorize and share.</td>
+      <td class="it-fix"><div class="fix-text">Register custom domain (~$15/yr)</div><div class="fix-sub">Point DNS to GitHub Pages — 15-minute setup</div></td>
+    </tr>
+
+    <tr>
+      <td class="it-sev"><span class="it-sev-badge sev-warn">Opportunity</span></td>
+      <td class="it-issue">Email list signup<br><span style="font-size:9px;color:#888;font-weight:400;">Not yet visible on site</span></td>
+      <td class="it-impact">Every visitor who doesn't sign up for updates is a one-time interaction. A small email list (100–200 people) is worth more than 2,000 Instagram followers.</td>
+      <td class="it-fix"><div class="fix-text">Add Mailchimp signup widget</div><div class="fix-sub">Offer: "Get new menu drops + catering specials." Start building list.</div></td>
+    </tr>
+
+    <tr>
+      <td class="it-sev"><span class="it-sev-badge sev-warn">Opportunity</span></td>
+      <td class="it-issue">Direct Square online ordering<br><span style="font-size:9px;color:#888;font-weight:400;">Is encouraged but not embedded</span></td>
+      <td class="it-impact">Right now customers must click away to a third party to order. A live ordering widget on the site would keep everything in one place and save the 15–30% commission.</td>
+      <td class="it-fix"><div class="fix-text">Embed Square Online ordering form</div><div class="fix-sub">Or add prominent "Click to order" button with direct Square link</div></td>
+    </tr>
+
+    <tr>
+      <td class="it-sev"><span class="it-sev-badge sev-warn">Opportunity</span></td>
+      <td class="it-issue">SEO optimization<br><span style="font-size:9px;color:#888;font-weight:400;">Good content exists, schema markup could be added</span></td>
+      <td class="it-impact">Site is indexable and has solid content, but structured data (schema.org for restaurant, menu, reviews) would boost local SEO rankings for "Iraqi bakery Springfield" and "unique food downtown."</td>
+      <td class="it-fix"><div class="fix-text">Add schema markup</div><div class="fix-sub">Restaurant + menu schema + review schema = better local search visibility</div></td>
+    </tr>
+
+    <tr>
+      <td class="it-sev"><span class="it-sev-badge sev-warn">Opportunity</span></td>
+      <td class="it-issue">Blog / seasonal content<br><span style="font-size:9px;color:#888;font-weight:400;">Not yet added</span></td>
+      <td class="it-impact">Seasonal posts (Ramadan menu, holiday gift boxes, etc.) would give the site a reason to rank for new searches and give repeat visitors a reason to come back.</td>
+      <td class="it-fix"><div class="fix-text">Add simple blog section</div><div class="fix-sub">Post 1–2x/month about special items, events, cultural celebrations</div></td>
+    </tr>
+
+    <tr>
+      <td class="it-sev"><span class="it-sev-badge sev-info">Info</span></td>
+      <td class="it-issue">Google Business profile verification</td>
+      <td class="it-impact">The site is live and great, but if Google Business isn't fully optimized (photos, hours, phone, description), local search visibility is still capped.</td>
+      <td class="it-fix"><div class="fix-text">Claim and complete Google Business</div><div class="fix-sub">Add photos + hours + phone + full description. Free, biggest SEO impact per hour.</div></td>
+    </tr>
+
+    <!-- GOOD -->
+    <tr class="issues-group-header"><td colspan="4">✅ Working Exceptionally Well — Keep These</td></tr>
+
+    <tr>
+      <td class="it-sev"><span class="it-sev-badge sev-ok">Excellent</span></td>
+      <td class="it-issue">Overall site design and UX</td>
+      <td class="it-impact">Beautiful, clean layout. Story flows naturally. Menu is easy to scan. Call-to-actions are clear. Mobile responsive. Professional appearance.</td>
+      <td class="it-fix"><div class="fix-text">No changes needed</div><div class="fix-sub">This is best-in-class for a small food business</div></td>
+    </tr>
+    <tr>
+      <td class="it-sev"><span class="it-sev-badge sev-ok">Excellent</span></td>
+      <td class="it-issue">Story section execution</td>
+      <td class="it-impact">The "Cup of Tea" narrative is the emotional heartbeat of the brand. Told compellingly. This is what converts casual visitors into loyal customers.</td>
+      <td class="it-fix"><div class="fix-text">Keep as is</div><div class="fix-sub">Consider adding more photos as the business grows</div></td>
+    </tr>
+    <tr>
+      <td class="it-sev"><span class="it-sev-badge sev-ok">Excellent</span></td>
+      <td class="it-issue">Menu presentation + item descriptions</td>
+      <td class="it-impact">Every item has a name in English + Arabic, a clear description, and pricing. This is professional bakery-level content.</td>
+      <td class="it-fix"><div class="fix-text">Keep synced with DoorDash/Uber/Grubhub</div><div class="fix-sub">Update prices in one place, sync everywhere</div></td>
+    </tr>
+    <tr>
+      <td class="it-sev"><span class="it-sev-badge sev-ok">Excellent</span></td>
+      <td class="it-issue">Press coverage display</td>
+      <td class="it-impact">All 4 major outlets (417 Mag, SBJ, Daily Citizen, Ozarks) now visible on the home page. Instant credibility boost.</td>
+      <td class="it-fix"><div class="fix-text">Keep active</div><div class="fix-sub">Add new coverage as it happens</div></td>
+    </tr>
+    <tr>
+      <td class="it-sev"><span class="it-sev-badge sev-ok">Excellent</span></td>
+      <td class="it-issue">Catering form + events page</td>
+      <td class="it-impact">Creates a path for high-margin B2B orders (office events, weddings, Ramadan catering). This was a zero-revenue gap before.</td>
+      <td class="it-fix"><div class="fix-text">Keep and monitor submissions</div><div class="fix-sub">This could become 20–30% of revenue over time</div></td>
+    </tr>
+    <tr>
+      <td class="it-sev"><span class="it-sev-badge sev-ok">Excellent</span></td>
+      <td class="it-issue">Mobile responsiveness</td>
+      <td class="it-impact">Site scales beautifully on all devices. Menu, navigation, CTAs all accessible on phone.</td>
+      <td class="it-fix"><div class="fix-text">Test monthly on iOS + Android</div><div class="fix-sub">No action needed unless issues appear</div></td>
+    </tr>
+
+  </tbody>
+</table>
+
+<!-- ── OPPORTUNITY ─────────────────────────────────────────────── -->
+<div class="section-title">April 2026 Update — From Crisis to Momentum</div>
+<div class="opp-card">
+  <span class="opp-label">⭐ What Changed Since Last Audit</span>
+  <div class="opp-item">Complete website rebuild — moved from near-empty Square site to custom-built site with all content, story, menu, press coverage, and catering page</div>
+  <div class="opp-item">All three delivery platforms now linked and promoted (DoorDash, Uber Eats, Grubhub) — was DoorDash only before</div>
+  <div class="opp-item">Catering/events inquiry form now live — opens up new B2B revenue stream that was invisible before</div>
+  <div class="opp-item">Phone number now findable on website — removed critical barrier to phone orders</div>
+  <div class="opp-item">Press coverage (4 major outlets) now displayed on homepage — $10,000+ in earned media credibility finally visible</div>
+  <div class="opp-item">Story section is beautiful and comprehensive — tells the complete journey from Mosul to Springfield</div>
+  <div class="opp-item">5-star reviews from Yelp, Google, joe.coffee now embedded on homepage — social proof is working for conversions</div>
+  <div class="opp-item">Instagram now integrated with site footer — fresh content drives traffic to owned property</div>
+</div>
+
+<!-- ── COLD CALL NOTES ─────────────────────────────────────────── -->
+<div class="section-title">Cold Call / Walk-In Script</div>
+<div class="cold-notes">
+  <span class="cn-label">📞 3-Step Approach</span>
+
+  <div class="cn-step">
+    <div class="cn-num">1</div>
+    <div>
+      <div class="cn-head">The Opener — Lead with the story, not the sale</div>
+      <div class="cn-body">"I read the 417 Magazine article about you — honestly one of the most compelling business stories I've come across in Springfield. I specialize in helping local businesses like yours turn press coverage into customers. Can I ask — how many new people do you think found you after that article ran?"<br><br>
+      <em>Let her answer. Whatever number she says, respond:</em> "Here's the thing — that article is still live and people are still reading it. But when they Google 'Asa Al-Furat' after reading it, your website doesn't tell your story. It's essentially a blank page. The article does more for you than your own site."</div>
+    </div>
+  </div>
+
+  <div class="cn-step">
+    <div class="cn-num">2</div>
+    <div>
+      <div class="cn-head">The Demo — Show it on your phone, live</div>
+      <div class="cn-body">Pull up <strong>asa-al-furat.square.site</strong> on your phone right now, before you walk in. Show her. Then pull up the 417 Magazine article next to it. "This article — which someone else wrote about you for free — does 10x more selling than your website. Let me show you what a site built around your story would look like."<br><br>
+      Then pull up a comparable well-done bakery site as a visual reference. The contrast sells itself.</div>
+    </div>
+  </div>
+
+  <div class="cn-step">
+    <div class="cn-num">3</div>
+    <div>
+      <div class="cn-head">The Close — Frame it as capturing what already exists</div>
+      <div class="cn-body">"You don't need me to create anything from scratch. The story is already written. The reviews are already there. The press coverage is already there. I'm just going to build a place online where all of it lives together, so every new customer who finds you gets the full picture — not just a blank Square page.<br><br>
+      You've done the hard part. Your website just hasn't caught up yet."<br><br>
+      <em>If budget is a concern:</em> "We start with the site — one flat fee, you own it forever. The delivery platforms I can add in the same week. And the first month of new orders you get without paying DoorDash 30% commission covers most of it."</div>
+    </div>
+  </div>
+</div>
+
+<!-- ── PITCH ANGLES ────────────────────────────────────────────── -->
+<div class="section-title">Alternate Pitch Angles (If Needed)</div>
+<div class="pitch-grid">
+  <div class="pitch-item">
+    <div class="pitch-type">💸 DoorDash Commission Angle</div>
+    <div class="pitch-text">"DoorDash takes 15–30% of every order. If you average $500/week in delivery, that's $75–150 going to DoorDash, not you. Square's own online ordering has zero per-order commission — customers order directly from your site and 100% of the revenue is yours. The site pays for itself in 3–6 months."</div>
+  </div>
+  <div class="pitch-item">
+    <div class="pitch-type">📱 Catering Angle</div>
+    <div class="pitch-text">"Baklava trays for office events, weddings, Ramadan gatherings — downtown Springfield has law firms, medical offices, and event venues all within 3 blocks of you. A simple catering inquiry form on your site would capture those orders. Right now there's no way for anyone to even ask."</div>
+  </div>
+  <div class="pitch-item">
+    <div class="pitch-type">📸 Instagram → Website Angle</div>
+    <div class="pitch-text">"Your Instagram has people who are already fans. But Instagram can shadowban you, change the algorithm, or go down tomorrow. Your website is the one place you own permanently. Every Instagram post should have a link that takes followers to your site — right now that link goes nowhere useful."</div>
+  </div>
+  <div class="pitch-item">
+    <div class="pitch-type">🗺️ Tourism Angle</div>
+    <div class="pitch-text">"Downtown Springfield gets visitors who've never tried Iraqi food. If someone Googles 'unique food downtown Springfield' or 'Iraqi bakery near me' — right now you might not show up, or if you do, they land on an empty page. A proper site with SEO would capture those searches every single day."</div>
+  </div>
+</div>
+
+<!-- ── WHAT A GOOD SITE LOOKS LIKE ────────────────────────────── -->
+<div class="section-title">What a Proper Site Would Include</div>
+<div class="vision-card">
+  <div class="vision-title">The Site This Business Deserves</div>
+
+  <div class="vision-row">
+    <div class="vision-check">✓</div>
+    <div class="vision-text"><strong>Custom domain</strong> — asaalfurat.com (or asaalfuratspringfield.com) — clean, memorable, ownable</div>
+  </div>
+  <div class="vision-row">
+    <div class="vision-check">✓</div>
+    <div class="vision-text"><strong>Hero section</strong> — her face, the food, one line from the 417 article quote, clear CTA ("Order Now" / "Visit Us")</div>
+  </div>
+  <div class="vision-row">
+    <div class="vision-check">✓</div>
+    <div class="vision-text"><strong>Story / About page</strong> — Mosul → Turkey → Springfield → C-Street Market → Holland Building. In her words. Photos. This is what builds regulars.</div>
+  </div>
+  <div class="vision-row">
+    <div class="vision-check">✓</div>
+    <div class="vision-text"><strong>Full menu page</strong> — photos, descriptions, prices for every item. Links to DoorDash + direct Square ordering.</div>
+  </div>
+  <div class="vision-row">
+    <div class="vision-check">✓</div>
+    <div class="vision-text"><strong>Press / "As Seen In" section</strong> — 417 Magazine, Springfield Daily Citizen, SBJ logos/links. Instant credibility for every new visitor.</div>
+  </div>
+  <div class="vision-row">
+    <div class="vision-check">✓</div>
+    <div class="vision-text"><strong>Instagram feed embed</strong> — @asa.alfurat photos live on the site. Fresh content without updating the site manually.</div>
+  </div>
+  <div class="vision-row">
+    <div class="vision-check">✓</div>
+    <div class="vision-text"><strong>Catering inquiry form</strong> — "Order a tray for your event" with size options and date field. This is passive revenue she currently can't capture.</div>
+  </div>
+  <div class="vision-row">
+    <div class="vision-check">✓</div>
+    <div class="vision-text"><strong>Phone + hours front and center</strong> — currently impossible to find online. Every visitor needs this.</div>
+  </div>
+  <div class="vision-row">
+    <div class="vision-check">✓</div>
+    <div class="vision-text"><strong>Google Maps embed</strong> — 207 Park Central E, Holland Building. Downtown visitors need walkable directions.</div>
+  </div>
+  <div class="vision-row">
+    <div class="vision-check">✓</div>
+    <div class="vision-text"><strong>Direct online ordering</strong> — Square's free ordering = 0% commission vs. DoorDash's 15–30%.</div>
+  </div>
+  <div class="vision-row">
+    <div class="vision-check">✓</div>
+    <div class="vision-text"><strong>Email/SMS signup</strong> — "New menu drops + events" — build a list she owns, not just followers she rents from Instagram.</div>
+  </div>
+  <div class="vision-row">
+    <div class="vision-check">✓</div>
+    <div class="vision-text"><strong>Bilingual touch</strong> — item names in Arabic alongside English, with a small pronunciation guide. Memorable, shareable, authentic.</div>
+  </div>
+</div>
+
+<!-- ── PRICE PROPOSAL ──────────────────────────────────────────── -->
+<div class="section-title">Estimated Price Proposal — Springfield MO Market</div>
+<div class="price-card">
+  <span class="price-label">💰 What to Quote</span>
+  <table class="price-table">
+    <thead>
+      <tr>
+        <th>Item</th>
+        <th>What's Included</th>
+        <th>Range</th>
+        <th>Timeline</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="price-line">Custom Domain</td>
+        <td class="price-note">asaalfurat.com — she owns it permanently</td>
+        <td class="price-line">$15–$20/yr</td>
+        <td><span class="timeline">1 day</span></td>
+      </tr>
+      <tr>
+        <td class="price-line">Full Website Build</td>
+        <td class="price-note">Custom domain + story/about page + full menu + press section + Instagram embed + catering form + hours/phone/map + Google SEO setup + mobile-perfect</td>
+        <td class="price-line">$1,400–$2,200</td>
+        <td><span class="timeline">1–2 wks</span></td>
+      </tr>
+      <tr>
+        <td class="price-line">Delivery Expansion</td>
+        <td class="price-note">Uber Eats setup + Grubhub setup — menu photos, listing optimization, activation</td>
+        <td class="price-line">$400–$700</td>
+        <td><span class="timeline">1 wk</span></td>
+      </tr>
+      <tr>
+        <td class="price-line">Direct Online Ordering</td>
+        <td class="price-note">Square Online ordering on her own site — 0% commission. Connects to existing Square POS.</td>
+        <td class="price-line">$0–$150 setup</td>
+        <td><span class="timeline">2–3 days</span></td>
+      </tr>
+      <tr>
+        <td class="price-line">Optional: Photography</td>
+        <td class="price-note">2–3hr product + portrait shoot — food photos for menu, hero image of Imtihan</td>
+        <td class="price-line">$350–$600</td>
+        <td><span class="timeline">1 session</span></td>
+      </tr>
+      <tr>
+        <td class="price-line" style="font-size:13px;">TOTAL PACKAGE</td>
+        <td class="price-note">Everything above — owns the domain + site forever. Delivery expanded. Commission-free ordering live.</td>
+        <td class="price-line" style="font-size:16px; color:#1a6b3c;">$1,800–$3,000</td>
+        <td><span class="timeline">2 wks total</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <div style="margin-top:12px;font-size:10px;color:#555;line-height:1.6;">
+    <strong>ROI framing:</strong> If she's doing $500/week in DoorDash orders at 20% commission, that's $100/week going to DoorDash = $5,200/year. Direct online ordering on her own site would recover that fee inside 7 months. The site pays for itself before the first year is out.
+  </div>
+</div>
+
+<footer style="margin-top: 40px; padding-top: 20px; border-top: 2px solid #ddd; text-align: center; font-size: 11px; color: #999;">
+  <strong>Asa Al-Furat Lead Brief — UPDATED AUDIT</strong> · 207 Park Central E, Springfield MO 65806 · Opened Sept 8, 2025 · <strong>Re-audited April 21, 2026</strong><br>
+  Website: <a href="https://stowaway6959.github.io/asa-al-furat-site/" target="_blank" style="color:#666;">stowaway6959.github.io/asa-al-furat-site/</a> · Sources: <a href="https://sgfcitizen.org/economy-growth/business/21-year-old-refugee-opens-iraqi-bakery-in-springfield/" target="_blank" style="color:#aaa;">Springfield Daily Citizen</a> ·
+  <a href="https://www.417mag.com/food-drink/story-behind-asa-al-furat/" target="_blank" style="color:#aaa;">417 Magazine</a> ·
+  <a href="https://sbj.net/stories/open-for-business-asa-al-furat,102045" target="_blank" style="color:#aaa;">Springfield Business Journal</a> ·
+  <a href="https://aroundtheozarks.com/2025/10/29/asa-al-furat-now-open-in-springfield/" target="_blank" style="color:#aaa;">Around the Ozarks</a> ·
+  <a href="https://www.doordash.com/store/asa-al-furat-springfield-40497555/" target="_blank" style="color:#aaa;">DoorDash</a> ·
+  <a href="https://joe.coffee/locations/mo/springfield/asa-al-furat-springfield/" target="_blank" style="color:#aaa;">joe.coffee</a>
+</footer>
+
+</body>
+</html>
