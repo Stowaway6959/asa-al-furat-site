@@ -94,6 +94,7 @@ html.dark .press-bar {
 html.dark .press-pill { background: #221808; border-color: #2C2018; }
 html.dark .press-pill.gold { background: #1E1508; color: var(--gold-mid); }
 html.dark .press-pill.review-pill { background: #0A1020; border-color: #1a2840; color: #6090d0; }
+html.dark .press-row + .press-row { border-top-color: #2C2018; }
 html.dark .menu-card,
 html.dark .review-card,
 html.dark .pitch-item,
@@ -273,8 +274,21 @@ h1.hero-title em { color: var(--gold-mid); font-style: italic; }
   background: var(--white);
   border-bottom: 1px solid var(--border-soft);
   padding: 16px 48px;
-  display: flex; align-items: center; justify-content: center;
-  gap: 10px; flex-wrap: wrap;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.press-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.press-row + .press-row {
+  border-top: 1px solid var(--border-soft);
+  padding-top: 10px;
 }
 .press-label {
   font-size: 9px; font-weight: 700; letter-spacing: 2.5px;
@@ -858,16 +872,20 @@ footer {
 
 <!-- ── AS SEEN IN ─────────────────────────────────────────────── -->
 <div class="press-bar">
-  <span class="press-label">As Seen In</span>
-  <a href="https://www.417mag.com/food-drink/story-behind-asa-al-furat/" target="_blank" rel="noopener" class="press-pill gold">📰 417 Magazine</a>
-  <a href="https://sgfcitizen.org/economy-growth/business/21-year-old-refugee-opens-iraqi-bakery-in-springfield/" target="_blank" rel="noopener" class="press-pill gold">📰 Springfield Daily Citizen</a>
-  <a href="https://sbj.net/stories/open-for-business-asa-al-furat,102045" target="_blank" rel="noopener" class="press-pill gold">📰 Springfield Business Journal</a>
-  <a href="https://aroundtheozarks.com/2025/10/29/asa-al-furat-now-open-in-springfield/" target="_blank" rel="noopener" class="press-pill">📰 Around the Ozarks</a>
-  <a href="https://www.springfieldmo.org/eat/asa-al-furat/" target="_blank" rel="noopener" class="press-pill">🏙️ Springfield CVB</a>
-  <a href="https://joe.coffee/locations/mo/springfield/asa-al-furat-springfield/" target="_blank" rel="noopener" class="press-pill">☕ joe.coffee · 5 Stars</a>
-  <span class="press-label" style="margin-left:8px;">Reviews</span>
-  <a href="https://www.google.com/maps/search/Asa+Al-Furat+207+Park+Central+E+Springfield+MO/" target="_blank" rel="noopener" class="press-pill review-pill">⭐ Google Reviews</a>
-  <a href="https://www.yelp.com/biz/asa-al-furat-springfield" target="_blank" rel="noopener" class="press-pill review-pill">⭐ Yelp</a>
+  <div class="press-row">
+    <span class="press-label">As Seen In</span>
+    <a href="https://www.417mag.com/food-drink/story-behind-asa-al-furat/" target="_blank" rel="noopener" class="press-pill gold">📰 417 Magazine</a>
+    <a href="https://sgfcitizen.org/economy-growth/business/21-year-old-refugee-opens-iraqi-bakery-in-springfield/" target="_blank" rel="noopener" class="press-pill gold">📰 Springfield Daily Citizen</a>
+    <a href="https://sbj.net/stories/open-for-business-asa-al-furat,102045" target="_blank" rel="noopener" class="press-pill gold">📰 Springfield Business Journal</a>
+    <a href="https://aroundtheozarks.com/2025/10/29/asa-al-furat-now-open-in-springfield/" target="_blank" rel="noopener" class="press-pill">📰 Around the Ozarks</a>
+    <a href="https://www.springfieldmo.org/eat/asa-al-furat/" target="_blank" rel="noopener" class="press-pill">🏙️ Springfield CVB</a>
+    <a href="https://joe.coffee/locations/mo/springfield/asa-al-furat-springfield/" target="_blank" rel="noopener" class="press-pill">☕ joe.coffee · 5 Stars</a>
+  </div>
+  <div class="press-row">
+    <span class="press-label">Reviews</span>
+    <a href="https://www.google.com/maps/search/Asa+Al-Furat+207+Park+Central+E+Springfield+MO/" target="_blank" rel="noopener" class="press-pill review-pill">⭐ Google Reviews</a>
+    <a href="https://www.yelp.com/biz/asa-al-furat-springfield" target="_blank" rel="noopener" class="press-pill review-pill">⭐ Yelp</a>
+  </div>
 </div>
 
 <!-- ── STORY ──────────────────────────────────────────────────── -->
